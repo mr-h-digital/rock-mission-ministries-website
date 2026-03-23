@@ -94,8 +94,10 @@ This project is configured to deploy optimized files automatically via GitHub Ac
 1. Push repository to GitHub.
 2. Open repository `Settings`.
 3. Go to `Pages`.
-4. Under Source, choose `GitHub Actions`.
-5. Push to `main` to trigger build and deploy.
+4. Under Source, choose `Deploy from a branch`.
+5. Select branch `gh-pages` and folder `/ (root)`.
+6. Save settings.
+7. Push to `main` to trigger build and deploy.
 
 Workflow file:
 
