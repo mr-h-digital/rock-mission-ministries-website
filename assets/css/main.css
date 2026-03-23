@@ -28,6 +28,84 @@
     line-height: 1.65;
     overflow-x: hidden;
   }
+
+  /* ─── SECTION TRANSITIONS ───────────────────────── */
+  .section-transition-target {
+    position: relative;
+    isolation: isolate;
+    opacity: 0.52;
+    transform: translateY(36px) scale(0.985);
+    filter: saturate(0.84) contrast(0.97);
+    transition: opacity 0.95s cubic-bezier(0.22,1,0.36,1), transform 1s cubic-bezier(0.22,1,0.36,1), filter 0.95s ease;
+  }
+  .section-transition-target.transition-left {
+    transform: translateY(36px) translateX(-28px) scale(0.985);
+  }
+  .section-transition-target.transition-right {
+    transform: translateY(36px) translateX(28px) scale(0.985);
+  }
+  .section-transition-target.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: saturate(1) contrast(1);
+  }
+  .section-transition-target::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(86vw, 980px);
+    height: 2px;
+    transform: translateX(-50%);
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(240,165,0,0.55) 50%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.28) 48%, transparent 52%);
+    background-size: 100% 100%, 180% 100%;
+    background-position: 0 0, 100% 0;
+    opacity: 0.42;
+    pointer-events: none;
+    z-index: 3;
+    animation: divider-sweep 4.8s ease-in-out infinite;
+  }
+  .section-transition-target::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: min(86vw, 980px);
+    height: 126px;
+    transform: translateX(-50%) translateY(var(--cinema-shift, 0px));
+    background:
+      radial-gradient(ellipse at top, rgba(240,165,0,0.2), transparent 66%),
+      linear-gradient(180deg, rgba(245,237,224,0.06), transparent 68%);
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 2;
+    transition: transform 0.55s ease-out, opacity 0.55s ease-out;
+  }
+  .section-transition-target.is-visible::after {
+    opacity: 0.34;
+  }
+  @keyframes divider-sweep {
+    0%, 100% { background-position: 0 0, 100% 0; }
+    50% { background-position: 0 0, -35% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-transition-target,
+    .section-transition-target.is-visible {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      transition: none;
+    }
+    .section-transition-target::before {
+      animation: none;
+    }
+    .section-transition-target::after {
+      transform: translateX(-50%);
+      transition: none;
+    }
+  }
   img { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
 
@@ -928,6 +1006,53 @@
     font-size: 12px;
     color: rgba(245,237,224,0.35);
   }
+  .footer-credit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    padding-left: 16px;
+  }
+  .footer-credit::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 22px;
+    transform: translateY(-50%);
+    background: rgba(245,237,224,0.28);
+  }
+  .footer-credit-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 4px 6px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .footer-credit-link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(240,165,0,0.2);
+    background: rgba(240,165,0,0.03);
+  }
+  .footer-credit-link:focus-visible {
+    outline: 2px solid rgba(240,165,0,0.55);
+    outline-offset: 2px;
+    border-color: rgba(240,165,0,0.22);
+  }
+  .footer-credit-logo {
+    width: 132px;
+    height: 40px;
+    object-fit: contain;
+    object-position: center;
+    transform: none;
+    filter: drop-shadow(0 0 12px rgba(240,165,0,0.35));
+  }
   .footer-bottom a { color: var(--gold); }
 
   /* ─── MOBILE NAV ─────────────────────────────────── */
@@ -977,6 +1102,9 @@
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    .footer-credit { justify-content: center; margin-left: 0; }
+    .footer-credit-link { min-height: 52px; padding: 6px 8px; }
+    .footer-credit-logo { width: 116px; height: 36px; }
     .hero-content { margin-left: 0; padding: 60px 24px 60px; }
     .projects-header { flex-direction: column; align-items: flex-start; }
   }

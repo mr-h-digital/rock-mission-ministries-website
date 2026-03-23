@@ -38,3 +38,39 @@
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease, border-color 0.3s';
     observer.observe(el);
   });
+
+  // Section-to-section transitions for smoother scroll handoffs.
+  const sectionTargets = document.querySelectorAll('section:not(#home), .stats-bar, .gospel-cta');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
+
+  sectionTargets.forEach((section, index) => {
+    section.classList.add('section-transition-target');
+    section.classList.add((index % 2 === 0) ? 'transition-left' : 'transition-right');
+    sectionObserver.observe(section);
+  });
+
+  let ticking = false;
+  const updateCinematicShift = () => {
+    sectionTargets.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const centerOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      const shift = Math.max(-10, Math.min(10, -centerOffset * 16));
+      section.style.setProperty('--cinema-shift', shift.toFixed(2) + 'px');
+    });
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateCinematicShift);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateCinematicShift();
