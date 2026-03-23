@@ -1,13 +1,45 @@
-# Rock Mission Website Structure
+# Rock Mission Ministries Website
 
-This project has been reorganized into a standard static-site architecture so styles, scripts, and page content are easier to maintain.
+<p align="center">
+	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website/actions/workflows/deploy-pages.yml">
+		<img src="https://img.shields.io/github/actions/workflow/status/mr-h-digital/rock-mission-ministries-website/deploy-pages.yml?branch=main&label=deploy&logo=githubactions&logoColor=white" alt="Deploy Status" />
+	</a>
+	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website/commits/main">
+		<img src="https://img.shields.io/github/last-commit/mr-h-digital/rock-mission-ministries-website?label=last%20commit" alt="Last Commit" />
+	</a>
+	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website">
+		<img src="https://img.shields.io/github/repo-size/mr-h-digital/rock-mission-ministries-website?label=repo%20size" alt="Repo Size" />
+	</a>
+	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website/blob/main/LICENSE">
+		<img src="https://img.shields.io/github/license/mr-h-digital/rock-mission-ministries-website?label=license" alt="License" />
+	</a>
+</p>
 
-## Hosting Model
+<p align="center">
+	<img src="assets/images/mrh-digital-logo-transparent.png" alt="MRH Digital Logo" width="220" />
+</p>
 
-This is still a static website and can be hosted on GitHub Pages.
+<p align="center">
+	Structured static website with modern layout architecture, production build optimization, and automated GitHub Pages deployment.
+</p>
 
-- No server runtime is required.
-- The new build step is optional for local editing and mandatory only for optimized production output.
+---
+
+## Project Snapshot
+
+- Architecture: Static multi-page website
+- Stack: HTML, CSS, JavaScript
+- Hosting: GitHub Pages
+- Deployment: GitHub Actions workflow
+- Build Output: Minified production assets in `dist/`
+
+## Features
+
+- Clean website directory architecture
+- Separated concerns (`index.html`, `assets/css`, `assets/js`, `pages`)
+- Multi-page navigation (`about`, `projects`, `contact`)
+- Minified production build pipeline
+- Auto-deploy to GitHub Pages on push to `main`
 
 ## Directory Layout
 
@@ -20,6 +52,7 @@ rock-mission/
 │  ├─ js/
 │  │  └─ main.js
 │  └─ images/
+│     └─ mrh-digital-logo-transparent.png
 ├─ pages/
 │  ├─ about.html
 │  ├─ projects.html
@@ -29,22 +62,14 @@ rock-mission/
 ├─ .github/
 │  └─ workflows/
 │     └─ deploy-pages.yml
-├─ package.json
-├─ .gitignore
+├─ dist/
 ├─ archive/
 │  └─ rockmission-revamp.html
+├─ package.json
+├─ package-lock.json
+├─ .gitignore
 └─ README.md
 ```
-
-## What Changed
-
-- Main entry page is now `index.html`.
-- All inline styles were moved to `assets/css/main.css`.
-- All inline scripts were moved to `assets/js/main.js`.
-- Multi-page structure was added in `pages/` for about, projects, and contact content.
-- Automated GitHub Actions deployment was added in `.github/workflows/deploy-pages.yml`.
-- Build tooling was added through `package.json` and `scripts/build.mjs`.
-- The original single-file version was preserved in `archive/rockmission-revamp.html`.
 
 ## Local Development
 
@@ -54,25 +79,35 @@ Install dependencies:
 npm install
 ```
 
-Create optimized production files in `dist/`:
+Run production build:
 
 ```bash
 npm run build
 ```
 
-## GitHub Pages Auto-Deploy
+Build artifacts are generated in `dist/`.
 
-This repository includes workflow-based deployment of optimized files from `dist/`.
+## GitHub Pages Deployment
 
-1. Push this repository to GitHub.
-2. Open repository settings in GitHub.
-3. Go to Pages.
-4. Set source to `GitHub Actions`.
-5. Push to `main` branch.
+This project is configured to deploy optimized files automatically via GitHub Actions.
 
-The workflow will install dependencies, run `npm run build`, and publish `dist/` automatically.
+1. Push repository to GitHub.
+2. Open repository `Settings`.
+3. Go to `Pages`.
+4. Under Source, choose `GitHub Actions`.
+5. Push to `main` to trigger build and deploy.
 
-## Recommended Next Steps
+Workflow file:
 
-- Put future photos, logos, and graphics in `assets/images/`.
-- If JavaScript grows, split `main.js` into modules by feature.
+- `.github/workflows/deploy-pages.yml`
+
+## Build and Hosting Notes
+
+- The website remains a static site (no server infrastructure required).
+- The build process only optimizes output and does not change your hosting model.
+- You can still host directly on GitHub Pages for free.
+
+## Credits
+
+- Website project: Rock Mission Ministries
+- Development and branding support: MRH Digital
