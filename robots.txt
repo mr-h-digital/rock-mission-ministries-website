@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mr-h-digital.github.io/rock-mission-ministries-website/sitemap.xml
+Sitemap: https://www.rockmission.co.za/sitemap.xml
