@@ -1,18 +1,40 @@
   // NAV scroll effect
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+    if (nav) {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }
   });
 
   // Mobile menu
-  function openMobileMenu() {
-    document.getElementById('mobileMenu').classList.add('open');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  window.openMobileMenu = function openMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('open');
     document.body.style.overflow = 'hidden';
-  }
-  function closeMobileMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
+  };
+
+  window.closeMobileMenu = function closeMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
+  };
+
+  // Fallback close interactions.
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', (event) => {
+      if (event.target === mobileMenu) {
+        window.closeMobileMenu();
+      }
+    });
   }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      window.closeMobileMenu();
+    }
+  });
 
   // Donate amounts
   document.querySelectorAll('.donate-amt').forEach(btn => {

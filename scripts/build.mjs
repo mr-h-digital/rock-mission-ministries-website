@@ -87,7 +87,7 @@ async function build() {
     copyFileSync(join(ROOT, 'README.md'), join(DIST, 'README.md'));
   }
 
-  const rootStaticFiles = ['robots.txt', 'sitemap.xml', 'site.webmanifest', 'CNAME'];
+  const rootStaticFiles = ['robots.txt', 'sitemap.xml', 'site.webmanifest'];
   for (const fileName of rootStaticFiles) {
     const src = join(ROOT, fileName);
     if (existsSync(src)) {

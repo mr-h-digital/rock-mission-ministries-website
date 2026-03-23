@@ -1,17 +1,17 @@
   /* ─── TOKENS ────────────────────────────────────── */
   :root {
-    --rock: #0a0a0c;
-    --deep: #111118;
-    --panel: #16161f;
-    --border: rgba(255,255,255,0.07);
-    --gold: #f0a500;
-    --gold-light: #ffd166;
-    --ember: #e05c1a;
-    --cream: #f5ede0;
-    --muted: rgba(245,237,224,0.55);
+    --rock: #081629;
+    --deep: #0c2444;
+    --panel: #102b50;
+    --border: rgba(173,195,230,0.16);
+    --gold: #14b8a6;
+    --gold-light: #67e8f9;
+    --ember: #e11d74;
+    --cream: #eaf2ff;
+    --muted: rgba(175,195,230,0.72);
     --white: #ffffff;
-    --grad-gold: linear-gradient(135deg, #f0a500, #e05c1a);
-    --grad-dark: linear-gradient(180deg, #0a0a0c 0%, #16161f 100%);
+    --grad-gold: linear-gradient(135deg, #14b8a6, #e11d74);
+    --grad-dark: linear-gradient(180deg, #081629 0%, #102b50 100%);
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'Outfit', sans-serif;
     --font-italic: 'Playfair Display', serif;
@@ -58,7 +58,7 @@
     height: 2px;
     transform: translateX(-50%);
     background:
-      linear-gradient(90deg, transparent 0%, rgba(240,165,0,0.55) 50%, transparent 100%),
+      linear-gradient(90deg, transparent 0%, rgba(20,184,166,0.55) 50%, transparent 100%),
       linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.28) 48%, transparent 52%);
     background-size: 100% 100%, 180% 100%;
     background-position: 0 0, 100% 0;
@@ -76,7 +76,7 @@
     height: 126px;
     transform: translateX(-50%) translateY(var(--cinema-shift, 0px));
     background:
-      radial-gradient(ellipse at top, rgba(240,165,0,0.2), transparent 66%),
+      radial-gradient(ellipse at top, rgba(20,184,166,0.2), transparent 66%),
       linear-gradient(180deg, rgba(245,237,224,0.06), transparent 68%);
     opacity: 0.22;
     pointer-events: none;
@@ -260,8 +260,8 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(240,165,0,0.12) 0%, transparent 65%),
-      radial-gradient(ellipse 50% 80% at 10% 90%, rgba(224,92,26,0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 80% 40%, rgba(20,184,166,0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 80% at 10% 90%, rgba(225,29,116,0.11) 0%, transparent 60%),
       radial-gradient(ellipse 100% 100% at 50% 50%, #0a0a0c 0%, #0a0a0c 100%);
   }
   /* animated glow ring */
@@ -271,7 +271,7 @@
     transform: translate(-50%, -50%);
     width: 700px; height: 700px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(240,165,0,0.07) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(20,184,166,0.1) 0%, transparent 70%);
     animation: pulse-glow 6s ease-in-out infinite alternate;
     pointer-events: none;
   }
@@ -338,8 +338,8 @@
     animation: fade-up 0.9s ease 0.5s forwards;
   }
   .hero-acronym .letter-block {
-    background: rgba(240,165,0,0.12);
-    border: 1px solid rgba(240,165,0,0.3);
+    background: rgba(20,184,166,0.12);
+    border: 1px solid rgba(20,184,166,0.3);
     padding: 6px 12px;
     border-radius: 2px;
   }
@@ -449,7 +449,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(240,165,0,0.15) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(20,184,166,0.18) 0%, transparent 60%);
     z-index: 1;
   }
   /* placeholder cross/church icon */
@@ -578,11 +578,11 @@
     transform-origin: left;
     transition: transform 0.3s;
   }
-  .service-card:hover { border-color: rgba(240,165,0,0.3); transform: translateY(-4px); }
+  .service-card:hover { border-color: rgba(20,184,166,0.3); transform: translateY(-4px); }
   .service-card:hover::before { transform: scaleX(1); }
   .service-icon {
     width: 48px; height: 48px;
-    background: rgba(240,165,0,0.1);
+    background: rgba(20,184,166,0.12);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 20px;
@@ -642,7 +642,7 @@
     overflow: hidden;
     transition: border-color 0.3s;
   }
-  .project-card:hover { border-color: rgba(240,165,0,0.35); }
+  .project-card:hover { border-color: rgba(20,184,166,0.35); }
   .project-card.featured {
     grid-row: span 2;
   }
@@ -723,12 +723,12 @@
     overflow: hidden;
     transition: border-color 0.3s;
   }
-  .team-card:hover .team-avatar { border-color: rgba(240,165,0,0.4); }
+  .team-card:hover .team-avatar { border-color: rgba(20,184,166,0.4); }
   .team-avatar::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(240,165,0,0.08) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(20,184,166,0.1) 0%, transparent 60%);
   }
   .team-card .t-name {
     font-family: var(--font-display);
@@ -755,13 +755,13 @@
     transform: translate(-50%,-50%);
     width: 800px; height: 800px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(240,165,0,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(20,184,166,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
   .gospel-cta .big-quote {
     font-family: var(--font-display);
     font-size: clamp(80px, 14vw, 200px);
-    color: rgba(240,165,0,0.06);
+    color: rgba(20,184,166,0.08);
     line-height: 1;
     position: absolute;
     top: 50%; left: 50%;
@@ -806,7 +806,7 @@
     border-radius: 2px;
     transition: border-color 0.3s, transform 0.2s;
   }
-  .event-item:hover { border-color: rgba(240,165,0,0.3); transform: translateX(4px); }
+  .event-item:hover { border-color: rgba(20,184,166,0.3); transform: translateX(4px); }
   .event-date {
     min-width: 60px;
     text-align: center;
@@ -827,8 +827,8 @@
     border-radius: 2px;
     flex-shrink: 0;
   }
-  .event-badge.recurring { background: rgba(240,165,0,0.15); color: var(--gold); }
-  .event-badge.special { background: rgba(224,92,26,0.15); color: #ff8a4c; }
+  .event-badge.recurring { background: rgba(20,184,166,0.15); color: var(--gold); }
+  .event-badge.special { background: rgba(225,29,116,0.15); color: #f472b6; }
 
   /* ─── DONATE ─────────────────────────────────────── */
   #donate {
@@ -893,7 +893,7 @@
     cursor: pointer;
     transition: 0.2s;
   }
-  .donate-amt:hover, .donate-amt.active { border-color: var(--gold); color: var(--gold); background: rgba(240,165,0,0.08); }
+  .donate-amt:hover, .donate-amt.active { border-color: var(--gold); color: var(--gold); background: rgba(20,184,166,0.1); }
 
   /* ─── CONTACT ────────────────────────────────────── */
   #contact-us {
@@ -921,7 +921,7 @@
   }
   .contact-icon {
     width: 44px; height: 44px;
-    background: rgba(240,165,0,0.1);
+    background: rgba(20,184,166,0.1);
     border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
@@ -939,7 +939,7 @@
     transition: border-color 0.2s, background 0.2s;
     cursor: pointer;
   }
-  .social-link:hover { border-color: var(--gold); background: rgba(240,165,0,0.08); }
+  .social-link:hover { border-color: var(--gold); background: rgba(20,184,166,0.1); }
   .contact-form { display: flex; flex-direction: column; gap: 16px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { display: flex; flex-direction: column; gap: 8px; }
@@ -1037,13 +1037,13 @@
   }
   .footer-credit-link:hover {
     transform: translateY(-1px);
-    border-color: rgba(240,165,0,0.2);
-    background: rgba(240,165,0,0.03);
+    border-color: rgba(20,184,166,0.2);
+    background: rgba(20,184,166,0.04);
   }
   .footer-credit-link:focus-visible {
-    outline: 2px solid rgba(240,165,0,0.55);
+    outline: 2px solid rgba(20,184,166,0.55);
     outline-offset: 2px;
-    border-color: rgba(240,165,0,0.22);
+    border-color: rgba(20,184,166,0.22);
   }
   .footer-credit-logo {
     width: 132px;
@@ -1051,7 +1051,7 @@
     object-fit: contain;
     object-position: center;
     transform: none;
-    filter: drop-shadow(0 0 12px rgba(240,165,0,0.35));
+    filter: drop-shadow(0 0 12px rgba(20,184,166,0.35));
   }
   .footer-bottom a { color: var(--gold); }
 
@@ -1060,7 +1060,7 @@
     position: fixed;
     inset: 0;
     background: var(--rock);
-    z-index: 999;
+    z-index: 2000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1081,6 +1081,7 @@
   .mobile-close {
     position: absolute;
     top: 24px; right: 32px;
+    z-index: 2001;
     font-size: 32px;
     color: var(--muted);
     cursor: pointer;
