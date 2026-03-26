@@ -1,4 +1,7 @@
-# Rock Mission Ministries Website
+<p align="center">
+	<img src="assets/images/rock-mission-logo-transparent.png" alt="Rock Mission Ministries Logo" height="80" style="vertical-align:middle; margin-right:12px;" />
+	<strong style="font-size:1.6rem; vertical-align:middle;">Rock Mission Ministries Website</strong>
+</p>
 
 <p align="center">
 	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website/actions/workflows/deploy-pages.yml">

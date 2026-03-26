@@ -233,11 +233,16 @@
   }
   .nav-logo {
     display: flex;
-    flex-direction: column;
-    gap: 1px;
+    align-items: center;
+    flex-shrink: 0;
   }
-  .nav-logo .r { font-family: var(--font-display); font-size: 28px; color: var(--gold); line-height: 1; }
-  .nav-logo .sub { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .nav-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(32,227,207,0.22));
+  }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     font-size: 12px;
@@ -1039,19 +1044,13 @@
     gap: 48px;
     margin-bottom: 56px;
   }
-  .footer-brand .brand-name {
-    font-family: var(--font-display);
-    font-size: 36px;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-    line-height: 1;
-  }
-  .footer-brand .brand-tagline {
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
+  .footer-brand .footer-brand-logo {
+    display: block;
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(32,227,207,0.22));
+    margin-bottom: 14px;
   }
   .footer-brand p { font-size: 14px; color: var(--muted); line-height: 1.65; }
   .footer-col h4 {
@@ -1315,8 +1314,7 @@
       padding-right: max(14px, env(safe-area-inset-right));
     }
     .container { padding: 0 14px; }
-    .nav-logo .r { font-size: 24px; }
-    .nav-logo .sub { font-size: 8px; }
+    .nav-logo-img { height: 38px; }
     .section-label {
       font-size: 10px;
       letter-spacing: 0.14em;
