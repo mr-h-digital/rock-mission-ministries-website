@@ -209,6 +209,8 @@
     display: flex;
     align-items: center;
     padding: 0 32px;
+    padding-left: max(32px, env(safe-area-inset-left));
+    padding-right: max(32px, env(safe-area-inset-right));
     transition: background 0.3s, backdrop-filter 0.3s;
   }
   nav.scrolled {
@@ -253,7 +255,22 @@
     transition: opacity 0.2s;
   }
   .nav-cta:hover { opacity: 0.85; color: var(--rock); }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: -10px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .hamburger:hover { background: rgba(154,249,242,0.1); }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 1px; transition: 0.3s; }
 
   /* ─── HERO ───────────────────────────────────────── */
@@ -1110,9 +1127,15 @@
     z-index: 2000;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-top: calc(var(--nav-h) + max(32px, env(safe-area-inset-top)) + 8px);
+    padding-bottom: max(40px, env(safe-area-inset-bottom));
+    padding-left: max(36px, env(safe-area-inset-left));
+    padding-right: max(36px, env(safe-area-inset-right));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
   }
@@ -1122,18 +1145,41 @@
     font-size: 40px;
     color: var(--cream);
     letter-spacing: 0.04em;
+    line-height: 1.15;
+    padding: 10px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
     transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent;
   }
-  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-menu a:hover,
+  .mobile-menu a:active { color: var(--gold); }
   .mobile-close {
     position: absolute;
-    top: 24px; right: 32px;
+    top: max(24px, env(safe-area-inset-top));
+    right: max(24px, env(safe-area-inset-right));
     z-index: 2001;
-    font-size: 32px;
+    font-size: 28px;
     color: var(--muted);
     cursor: pointer;
-    background: none;
-    border: none;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(154,249,242,0.18);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .mobile-close:hover,
+  .mobile-close:active {
+    background: rgba(255,47,165,0.18);
+    border-color: var(--ember);
+    color: var(--cream);
   }
 
   .service-card.special-highlight {
@@ -1148,7 +1194,10 @@
   @media (max-width: 900px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
-    nav { padding: 0 18px; }
+    nav {
+      padding-left: max(18px, env(safe-area-inset-left));
+      padding-right: max(18px, env(safe-area-inset-right));
+    }
     .about-grid, .donate-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-visual { display: none; }
     .services-grid { grid-template-columns: 1fr; }
@@ -1165,7 +1214,6 @@
     .hero-content { margin-left: 0; padding: 60px 24px 60px; }
     .projects-header { flex-direction: column; align-items: flex-start; }
     .hero-bg { background-position: center, center, center, center, center, center 42%; }
-    .mobile-menu { gap: 28px; padding: 96px 22px 40px; justify-content: flex-start; overflow-y: auto; }
     .mobile-menu a { font-size: 34px; }
   }
 
@@ -1257,7 +1305,10 @@
   }
 
   @media (max-width: 540px) {
-    nav { padding: 0 14px; }
+    nav {
+      padding-left: max(14px, env(safe-area-inset-left));
+      padding-right: max(14px, env(safe-area-inset-right));
+    }
     .container { padding: 0 14px; }
     .nav-logo .r { font-size: 24px; }
     .nav-logo .sub { font-size: 8px; }
@@ -1362,7 +1413,12 @@
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 10px; }
     .contact-row .c-val { font-size: 14px; }
-    .mobile-menu { padding: 84px 14px 28px; }
+    .mobile-menu {
+      padding-top: calc(var(--nav-h) + max(24px, env(safe-area-inset-top)) + 8px);
+      padding-bottom: max(28px, env(safe-area-inset-bottom));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
     .mobile-menu a { font-size: 26px; }
   }
 
