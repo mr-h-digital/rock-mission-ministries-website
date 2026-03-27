@@ -51,6 +51,72 @@
     });
   });
 
+  // Contact forms
+  document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    const status = form.querySelector('.form-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const successRedirect = form.getAttribute('data-success-redirect');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!(form instanceof HTMLFormElement)) return;
+
+      const formData = new FormData(form);
+      if (status) {
+        status.textContent = 'Sending your message...';
+        status.classList.remove('is-success', 'is-error');
+      }
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || result.success === false) {
+          throw new Error(result.message || 'Unable to send your message right now.');
+        }
+
+        form.reset();
+        if (status) {
+          status.textContent = successRedirect
+            ? 'Message sent successfully. Redirecting...'
+            : 'Message sent successfully. We will get back to you soon.';
+          status.classList.remove('is-error');
+          status.classList.add('is-success');
+        }
+
+        if (successRedirect) {
+          window.setTimeout(() => {
+            window.location.href = successRedirect;
+          }, 900);
+        }
+      } catch (error) {
+        if (status) {
+          status.textContent = error instanceof Error
+            ? error.message
+            : 'Something went wrong while sending your message. Please try again.';
+          status.classList.remove('is-success');
+          status.classList.add('is-error');
+        }
+      } finally {
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  });
+
   // Intersection observer for scroll-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

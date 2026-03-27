@@ -597,28 +597,32 @@
         </div>
       </div>
       <div>
-        <div class="contact-form">
+        <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" data-contact-form data-success-redirect="pages/thank-you.html">
+          <input type="hidden" name="access_key" value="b04fbcd9-e1df-49d3-b16e-6229504f1555" />
+          <input type="hidden" name="subject" value="New message from Rock Mission Ministries website" />
+          <input type="hidden" name="from_name" value="Rock Mission Ministries Website" />
+          <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-row">
             <div class="form-group">
-              <label>First Name</label>
-              <input type="text" placeholder="Your name" />
+              <label for="home-first-name">First Name</label>
+              <input id="home-first-name" name="first_name" type="text" placeholder="Your name" autocomplete="given-name" required />
             </div>
             <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" placeholder="Your surname" />
+              <label for="home-last-name">Last Name</label>
+              <input id="home-last-name" name="last_name" type="text" placeholder="Your surname" autocomplete="family-name" required />
             </div>
           </div>
           <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="you@example.com" />
+            <label for="home-email">Email Address</label>
+            <input id="home-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
           </div>
           <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+27 ..." />
+            <label for="home-phone">Phone Number</label>
+            <input id="home-phone" name="phone" type="tel" placeholder="+27 ..." autocomplete="tel" />
           </div>
           <div class="form-group">
-            <label>I'm reaching out about...</label>
-            <select>
+            <label for="home-topic">I'm reaching out about...</label>
+            <select id="home-topic" name="topic" required>
               <option>Visiting a service</option>
               <option>Prayer request</option>
               <option>Community outreach</option>
@@ -627,11 +631,12 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Message</label>
-            <textarea placeholder="Tell us how we can help or connect with you..."></textarea>
+            <label for="home-message">Message</label>
+            <textarea id="home-message" name="message" placeholder="Tell us how we can help or connect with you..." required></textarea>
           </div>
-          <button class="gold-btn" style="align-self: flex-start;" type="button">Send Message →</button>
-        </div>
+          <p class="form-status" aria-live="polite"></p>
+          <button class="gold-btn" style="align-self: flex-start;" type="submit">Send Message →</button>
+        </form>
       </div>
     </div>
   </div>
