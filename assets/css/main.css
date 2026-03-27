@@ -351,15 +351,29 @@
     animation: fade-up 0.8s ease 0.2s forwards;
   }
   .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .hero-title-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fade-up 0.9s ease 0.35s forwards;
+  }
+  .hero-logo {
+    width: clamp(220px, 28vw, 360px);
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 18px rgba(32,227,207,0.28)) drop-shadow(0 0 40px rgba(255,47,165,0.15));
+    align-self: center;
+  }
   .hero-title {
     font-family: var(--font-display);
     font-size: clamp(64px, 11vw, 136px);
     line-height: 0.88;
     letter-spacing: 0.01em;
     color: var(--white);
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fade-up 0.9s ease 0.35s forwards;
+    margin-bottom: 0;
   }
   .hero-title .hero-break {
     display: block;
@@ -367,29 +381,81 @@
   }
   .hero-title .italic-line {
     display: block;
-    font-family: var(--font-italic);
-    font-size: clamp(24px, 4vw, 44px);
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3.8vw, 44px);
     font-weight: 400;
-    font-style: italic;
-    color: #ffd6f0;
-    letter-spacing: 0.02em;
-    margin-top: 8px;
+    font-style: normal;
+    text-align: justify;
+    text-align-last: justify;
+    width: 100%;
+    background: var(--grad-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--gold);
   }
   .hero-acronym {
     display: flex;
-    gap: 6px;
-    margin-bottom: 32px;
+    gap: 10px;
+    margin-bottom: 36px;
     opacity: 0;
     animation: fade-up 0.9s ease 0.5s forwards;
+    flex-wrap: wrap;
   }
   .hero-acronym .letter-block {
-    background: rgba(32,227,207,0.14);
-    border: 1px solid rgba(32,227,207,0.38);
-    padding: 6px 12px;
-    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(160deg, rgba(32,227,207,0.18) 0%, rgba(255,47,165,0.12) 100%);
+    border: 1px solid rgba(32,227,207,0.45);
+    padding: 12px 18px 10px;
+    border-radius: 14px;
+    min-width: 62px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    cursor: default;
   }
-  .hero-acronym .letter-block .big { font-family: var(--font-display); font-size: 24px; color: var(--gold); line-height: 1; }
-  .hero-acronym .letter-block .small { font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: lowercase; }
+  .hero-acronym .letter-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(32,227,207,0.08) 0%, rgba(255,47,165,0.06) 100%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .hero-acronym .letter-block:hover {
+    border-color: rgba(32,227,207,0.75);
+    box-shadow: 0 8px 24px rgba(32,227,207,0.2), 0 0 0 1px rgba(32,227,207,0.18);
+    transform: translateY(-3px);
+  }
+  .hero-acronym .letter-block:hover::before { opacity: 1; }
+  .hero-acronym .letter-block .big {
+    font-family: var(--font-display);
+    font-size: 34px;
+    line-height: 1;
+    background: var(--grad-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-acronym .letter-block .small {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--cream);
+    text-transform: uppercase;
+    opacity: 0.72;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+  }
   .hero-desc {
     font-size: 17px;
     font-weight: 300;
@@ -1242,6 +1308,11 @@
       padding: 40px 18px 72px;
     }
     .hero-bg { background-position: center, center, center, center, center, center 44%; }
+    .hero-title-row {
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .hero-logo { width: clamp(150px, 30vw, 220px); }
     .hero-title { font-size: clamp(48px, 15vw, 84px); }
     .hero-title .hero-break {
       display: inline;
@@ -1249,8 +1320,10 @@
     }
     .hero-title .hero-break::after { content: ' '; }
     .hero-title .italic-line {
-      font-size: clamp(20px, 6.2vw, 30px);
-      margin-top: 2px;
+      font-size: clamp(18px, 5.6vw, 26px);
+      margin-top: 8px;
+      width: 58%;
+      margin-left: 42%;
     }
     .hero-desc {
       max-width: 34ch;
@@ -1323,6 +1396,7 @@
     .section-label::before { width: 24px; }
     .section-heading { font-size: clamp(32px, 12vw, 46px); }
     .hero-content { padding: 28px 14px 68px; }
+    .hero-logo { width: clamp(120px, 28vw, 160px); }
     .hero-title { font-size: clamp(40px, 14vw, 56px); }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat-item:nth-child(2) { border-right: none; }
@@ -1333,9 +1407,10 @@
     .event-info .event-meta { font-size: 12px; }
     .footer-top { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-acronym { flex-wrap: wrap; }
-    .hero-acronym .letter-block { padding: 6px 10px; }
-    .hero-acronym .letter-block .big { font-size: 20px; }
+    .hero-acronym { gap: 8px; }
+    .hero-acronym .letter-block { padding: 10px 14px 8px; min-width: 54px; border-radius: 12px; }
+    .hero-acronym .letter-block .big { font-size: 28px; }
+    .hero-acronym .letter-block .small { font-size: 9px; }
     .gold-btn,
     .ghost-btn {
       width: 100%;
@@ -1375,8 +1450,11 @@
       margin-bottom: 14px;
     }
     .hero-title .italic-line {
-      font-size: clamp(17px, 5.9vw, 21px);
-      margin-top: 2px;
+      font-size: clamp(14px, 5vw, 18px);
+      margin-top: 6px;
+      width: 58%;
+      margin-left: 42%;
+      border-bottom-width: 1.5px;
     }
     .hero-desc {
       font-size: 14px;
@@ -1384,14 +1462,13 @@
       line-height: 1.48;
       max-width: 31ch;
     }
-    .hero-acronym {
-      gap: 4px;
-      margin-bottom: 20px;
-    }
+    .hero-acronym { gap: 6px; }
     .hero-acronym .letter-block {
-      padding: 5px 8px;
+      padding: 8px 10px 7px;
+      min-width: 48px;
+      border-radius: 10px;
     }
-    .hero-acronym .letter-block .big { font-size: 18px; }
+    .hero-acronym .letter-block .big { font-size: 24px; }
     .hero-acronym .letter-block .small {
       font-size: 8px;
       letter-spacing: 0.07em;
