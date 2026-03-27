@@ -281,7 +281,22 @@
     -webkit-tap-highlight-color: transparent;
   }
   .hamburger:hover { background: rgba(154,249,242,0.1); }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--cream); border-radius: 1px; transition: 0.3s; }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cream);
+    border-radius: 1px;
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity   0.25s ease,
+                background 0.25s ease;
+    transform-origin: center;
+  }
+
+  /* Morph to X */
+  .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
   /* ─── HERO ───────────────────────────────────────── */
   #home {
@@ -398,11 +413,16 @@
   }
   .hero-acronym {
     display: flex;
-    gap: 10px;
+    gap: 0;
+    justify-content: space-evenly;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 0 clamp(20px, 4vw, 56px);
+    box-sizing: border-box;
     margin-bottom: 36px;
     opacity: 0;
     animation: fade-up 0.9s ease 0.5s forwards;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .hero-acronym .letter-block {
     display: flex;
@@ -1407,7 +1427,7 @@
     .event-info .event-meta { font-size: 12px; }
     .footer-top { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-acronym { gap: 8px; }
+    .hero-acronym { padding: 0 clamp(16px, 3vw, 32px); }
     .hero-acronym .letter-block { padding: 10px 14px 8px; min-width: 54px; border-radius: 12px; }
     .hero-acronym .letter-block .big { font-size: 28px; }
     .hero-acronym .letter-block .small { font-size: 9px; }
@@ -1462,7 +1482,7 @@
       line-height: 1.48;
       max-width: 31ch;
     }
-    .hero-acronym { gap: 6px; }
+    .hero-acronym { padding: 0 12px; }
     .hero-acronym .letter-block {
       padding: 8px 10px 7px;
       min-width: 48px;
