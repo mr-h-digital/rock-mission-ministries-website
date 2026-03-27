@@ -577,6 +577,16 @@
     overflow: hidden;
     position: relative;
   }
+  .about-visual .img-frame .about-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 69% 42%;
+    display: block;
+    z-index: 0;
+  }
   .about-visual .img-frame::before {
     content: '';
     position: absolute;
