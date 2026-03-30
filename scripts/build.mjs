@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync, existsSync, cpSync } from 'node:fs';
+import { mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync, existsSync, cpSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import CleanCSS from 'clean-css';
 import { minify as minifyHtml } from 'html-minifier-terser';
@@ -50,9 +50,12 @@ async function build() {
 
   const htmlFiles = [
     { src: join(ROOT, 'index.html'), out: join(DIST, 'index.html') },
-    { src: join(ROOT, 'pages', 'about.html'), out: join(DIST, 'pages', 'about.html') },
-    { src: join(ROOT, 'pages', 'projects.html'), out: join(DIST, 'pages', 'projects.html') },
-    { src: join(ROOT, 'pages', 'contact.html'), out: join(DIST, 'pages', 'contact.html') }
+    ...readdirSync(join(ROOT, 'pages'), { withFileTypes: true })
+      .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+      .map((entry) => ({
+        src: join(ROOT, 'pages', entry.name),
+        out: join(DIST, 'pages', entry.name)
+      }))
   ];
 
   for (const file of htmlFiles) {
