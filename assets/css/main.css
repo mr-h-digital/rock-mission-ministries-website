@@ -372,16 +372,38 @@
     align-items: center;
     gap: 32px;
     margin-bottom: 20px;
+    perspective: 1200px;
     opacity: 0;
     animation: fade-up 0.9s ease 0.35s forwards;
   }
   .hero-logo {
-    width: clamp(220px, 28vw, 360px);
+    width: clamp(250px, 32vw, 430px);
     height: auto;
     object-fit: contain;
     flex-shrink: 0;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
     filter: drop-shadow(0 0 18px rgba(32,227,207,0.28)) drop-shadow(0 0 40px rgba(255,47,165,0.15));
     align-self: center;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform, filter;
+  }
+  .hero-title-row:hover .hero-logo,
+  .hero-logo:hover {
+    transform: rotateY(-18deg) rotateX(10deg) scale(1.08) translateZ(20px);
+    filter:
+      drop-shadow(16px 18px 28px rgba(6, 16, 28, 0.34))
+      drop-shadow(0 0 24px rgba(32,227,207,0.3))
+      drop-shadow(0 0 54px rgba(255,47,165,0.22));
+  }
+  .hero-title-row:active .hero-logo,
+  .hero-logo:active {
+    transform: rotateY(16deg) rotateX(-8deg) scale(1.03) translateZ(12px);
+    filter:
+      drop-shadow(10px 12px 22px rgba(6, 16, 28, 0.3))
+      drop-shadow(0 0 20px rgba(32,227,207,0.26))
+      drop-shadow(0 0 42px rgba(255,47,165,0.18));
   }
   .hero-title {
     font-family: var(--font-display);
@@ -1730,7 +1752,7 @@
       gap: 20px;
       align-items: flex-start;
     }
-    .hero-logo { width: clamp(150px, 30vw, 220px); }
+    .hero-logo { width: clamp(176px, 34vw, 250px); }
     .hero-title { font-size: clamp(48px, 15vw, 84px); }
     .hero-title .hero-break {
       display: inline;
@@ -1820,7 +1842,7 @@
       gap: 14px;
       margin-bottom: 18px;
     }
-    .hero-logo { width: clamp(96px, 24vw, 132px); }
+    .hero-logo { width: clamp(132px, 34vw, 176px); }
     .hero-title { font-size: clamp(40px, 14vw, 56px); }
     .hero-title .italic-line {
       width: auto;
@@ -1954,6 +1976,16 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero-logo {
+      transition: none;
+    }
+    .hero-title-row:hover .hero-logo,
+    .hero-logo:hover,
+    .hero-title-row:active .hero-logo,
+    .hero-logo:active {
+      transform: none;
+      filter: drop-shadow(0 0 18px rgba(32,227,207,0.28)) drop-shadow(0 0 40px rgba(255,47,165,0.15));
+    }
     .thank-you-page .thank-you-card,
     .thank-you-page .thank-you-badge,
     .thank-you-page .thank-you-logo,
