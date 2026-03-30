@@ -1,6 +1,17 @@
 <p align="center">
-	<img src="assets/images/rock-mission-logo-transparent.png" alt="Rock Mission Ministries Logo" height="80" style="vertical-align:middle; margin-right:12px;" />
-	<strong style="font-size:1.6rem; vertical-align:middle;">Rock Mission Ministries Website</strong>
+	<img src="assets/images/rock-mission-logo-transparent.png" alt="Rock Mission Ministries Logo" width="210" />
+</p>
+
+<h1 align="center">Rock Mission Ministries Website</h1>
+
+<p align="center">
+	<strong>Modern static website for ministry outreach, events, sermons, and community engagement.</strong>
+</p>
+
+<p align="center">
+	<a href="https://mr-h-digital.github.io/rock-mission-ministries-website/">Live Site</a>
+	·
+	<a href="https://github.com/mr-h-digital/rock-mission-ministries-website/actions/workflows/deploy-pages.yml">Deployment Workflow</a>
 </p>
 
 <p align="center">
@@ -18,63 +29,65 @@
 	</a>
 </p>
 
-<p align="center">
-	<img src="assets/images/mrh-digital-logo-transparent.png" alt="MRH Digital Logo" width="220" />
-</p>
-
-<p align="center">
-	Structured static website with modern layout architecture, production build optimization, and automated GitHub Pages deployment.
-</p>
-
 ---
 
-## Project Snapshot
+## Overview
 
-- Architecture: Static multi-page website
-- Stack: HTML, CSS, JavaScript
-- Hosting: GitHub Pages
-- Deployment: GitHub Actions workflow
-- Build Output: Minified production assets in `dist/`
+This repository contains the Rock Mission Ministries public website.
 
-## Features
+It is built as a static multi-page site with:
 
-- Clean website directory architecture
-- Separated concerns (`index.html`, `assets/css`, `assets/js`, `pages`)
-- Multi-page navigation (`about`, `projects`, `contact`)
-- Minified production build pipeline
-- Auto-deploy to GitHub Pages on push to `main`
+- Shared design system and responsive layout
+- Production build pipeline for minified assets
+- Automated deployment to GitHub Pages
 
-## Directory Layout
+## Highlights
+
+- Mobile-first responsive behavior across homepage and internal pages
+- Homepage sections for services, sermons, outreach projects, events, donations, and contact
+- Dedicated internal pages: About, Projects, Contact, and Thank You
+- Form handling integrated with Web3Forms and success redirect flow
+- Automated build and publish workflow using GitHub Actions
+
+## Technology
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Node.js build tooling
+
+## Project Structure
 
 ```text
 rock-mission/
-├─ index.html
-├─ assets/
-│  ├─ css/
-│  │  └─ main.css
-│  ├─ js/
-│  │  └─ main.js
-│  └─ images/
-│     └─ mrh-digital-logo-transparent.png
-├─ pages/
-│  ├─ about.html
-│  ├─ projects.html
-│  └─ contact.html
-├─ scripts/
-│  └─ build.mjs
-├─ .github/
-│  └─ workflows/
-│     └─ deploy-pages.yml
-├─ dist/
-├─ archive/
-│  └─ rockmission-revamp.html
-├─ package.json
-├─ package-lock.json
-├─ .gitignore
-└─ README.md
+|- index.html
+|- assets/
+|  |- css/
+|  |  |- main.css
+|  |- js/
+|  |  |- main.js
+|  |- images/
+|- pages/
+|  |- about.html
+|  |- projects.html
+|  |- contact.html
+|  |- thank-you.html
+|- scripts/
+|  |- build.mjs
+|- .github/
+|  |- workflows/
+|  |  |- deploy-pages.yml
+|- dist/
+|- archive/
+|- robots.txt
+|- sitemap.xml
+|- site.webmanifest
+|- package.json
+|- package-lock.json
+|- README.md
 ```
 
-## Local Development
+## Local Setup
 
 Install dependencies:
 
@@ -82,37 +95,50 @@ Install dependencies:
 npm install
 ```
 
-Run production build:
+Run optimized production build:
 
 ```bash
 npm run build
 ```
 
-Build artifacts are generated in `dist/`.
+Build output is generated in the dist folder.
 
-## GitHub Pages Deployment
+## Deployment
 
-This project is configured to deploy optimized files automatically via GitHub Actions.
-
-1. Push repository to GitHub.
-2. Open repository `Settings`.
-3. Go to `Pages`.
-4. Under Source, choose `Deploy from a branch`.
-5. Select branch `gh-pages` and folder `/ (root)`.
-6. Save settings.
-7. Push to `main` to trigger build and deploy.
+Deployment is automated by GitHub Actions and publishes dist to the gh-pages branch.
 
 Workflow file:
 
-- `.github/workflows/deploy-pages.yml`
+- .github/workflows/deploy-pages.yml
 
-## Build and Hosting Notes
+Deployment flow:
 
-- The website remains a static site (no server infrastructure required).
-- The build process only optimizes output and does not change your hosting model.
-- You can still host directly on GitHub Pages for free.
+1. Push changes to main
+2. Workflow installs dependencies and runs npm run build
+3. Generated dist output is published to gh-pages
+4. GitHub Pages serves the latest published build
+
+## Notes
+
+- This is a static site with no server runtime required.
+- Keep source edits in index, pages, assets, and scripts.
+- Do not edit dist manually; it is generated.
 
 ## Credits
 
-- Website project: Rock Mission Ministries
-- Development and branding support: MRH Digital
+- Website: Rock Mission Ministries
+- Development and branding support: Mr. H Digital
+
+---
+
+<p align="center">
+	<strong>Development Signature</strong>
+</p>
+
+<p align="center">
+	<img src="assets/images/mrh-digital-logo-transparent.png" alt="Mr. H Digital Logo" width="260" />
+</p>
+
+<p align="center">
+	Designed and developed by <a href="https://mrhdigital.co.za" target="_blank" rel="noopener noreferrer"><strong>Mr. H Digital</strong></a>
+</p>
