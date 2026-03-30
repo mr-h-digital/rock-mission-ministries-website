@@ -1447,6 +1447,28 @@
     transform: none;
     box-shadow: none;
   }
+  .subpage-section {
+    padding-top: max(120px, calc(var(--nav-h) + 36px));
+  }
+  .subpage-fill-screen {
+    min-height: 100vh;
+  }
+  .subpage-hero {
+    max-width: 760px;
+  }
+  .subpage-hero-copy {
+    opacity: 1;
+    animation: none;
+    max-width: none;
+    margin-top: 20px;
+  }
+  .subpage-footer-bottom {
+    padding-top: 0;
+    border-top: none;
+  }
+  .contact-submit {
+    align-self: flex-start;
+  }
 
   /* ─── FOOTER ─────────────────────────────────────── */
   footer {
@@ -1609,6 +1631,38 @@
   .service-card.special-highlight .time {
     color: var(--cream);
   }
+  .service-card.special-highlight .visit-copy {
+    margin-bottom: 20px;
+  }
+  .service-card.special-highlight .visit-cta {
+    font-size: 12px;
+    padding: 11px 24px;
+  }
+
+  .gospel-cta-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .donate-note {
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(245,237,224,0.4);
+  }
+  .donate-cta-primary,
+  .donate-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .donate-cta-primary {
+    margin-bottom: 12px;
+  }
+
+  .follow-ministry-label {
+    margin-bottom: 16px;
+  }
 
   /* ─── RESPONSIVE ─────────────────────────────────── */
   @media (max-width: 900px) {
@@ -1620,6 +1674,13 @@
     }
     .about-grid, .donate-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-visual { display: none; }
+    .about-page .about-visual {
+      display: block;
+      order: -1;
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto 12px;
+    }
     .services-grid { grid-template-columns: 1fr; }
     .sermons-header { flex-direction: column; align-items: flex-start; }
     .sermons-actions { width: 100%; }
@@ -1753,21 +1814,55 @@
     .section-label::before { width: 24px; }
     .section-heading { font-size: clamp(32px, 12vw, 46px); }
     .hero-content { padding: 28px 14px 68px; }
-    .hero-logo { width: clamp(120px, 28vw, 160px); }
+    .hero-title-row {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .hero-logo { width: clamp(96px, 24vw, 132px); }
     .hero-title { font-size: clamp(40px, 14vw, 56px); }
+    .hero-title .italic-line {
+      width: auto;
+      margin-left: 0;
+      text-align: left;
+      text-align-last: left;
+      display: inline-block;
+      min-width: min(100%, 11ch);
+    }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat-item:nth-child(2) { border-right: none; }
     .team-grid { grid-template-columns: 1fr; }
     .service-card { padding: 28px 20px; }
+    .service-card.special-highlight .visit-cta {
+      width: 100%;
+      justify-content: center;
+    }
     .project-body { padding: 18px; }
     .event-info h3 { font-size: 20px; }
     .event-info .event-meta { font-size: 12px; }
     .footer-top { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-acronym { padding: 0 clamp(16px, 3vw, 32px); }
-    .hero-acronym .letter-block { padding: 10px 14px 8px; min-width: 54px; border-radius: 12px; }
+    .hero-acronym {
+      width: 100%;
+      margin-left: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      justify-content: stretch;
+    }
+    .hero-acronym .letter-block {
+      width: 100%;
+      min-width: 0;
+      padding: 10px 12px 8px;
+      border-radius: 12px;
+    }
     .hero-acronym .letter-block .big { font-size: 28px; }
-    .hero-acronym .letter-block .small { font-size: 9px; }
+    .hero-acronym .letter-block .small {
+      font-size: 9px;
+      letter-spacing: 0.11em;
+    }
     .gold-btn,
     .ghost-btn {
       width: 100%;
@@ -1789,6 +1884,35 @@
       right: 18px;
     }
     .footer-bottom { font-size: 11px; }
+    .subpage-section {
+      padding-top: max(92px, calc(var(--nav-h) + 24px));
+    }
+    .subpage-fill-screen {
+      min-height: auto;
+    }
+    .subpage-hero {
+      margin-bottom: 34px;
+    }
+    .subpage-hero-copy {
+      max-width: 31ch;
+      margin-top: 14px;
+    }
+    .contact-submit {
+      align-self: stretch;
+    }
+    .about-page .about-visual {
+      margin-bottom: 4px;
+    }
+    .about-page .about-corner-badge {
+      right: 12px;
+      bottom: 12px;
+      padding: 14px 16px;
+      font-size: 34px;
+    }
+    .about-page .about-corner-badge .badge-sub {
+      font-size: 9px;
+      letter-spacing: 0.12em;
+    }
     .thank-you-section {
       padding-top: max(92px, calc(var(--nav-h) + 24px));
       align-items: flex-start;
@@ -1861,8 +1985,6 @@
     .hero-title .italic-line {
       font-size: clamp(14px, 5vw, 18px);
       margin-top: 6px;
-      width: 58%;
-      margin-left: 42%;
       border-bottom-width: 1.5px;
     }
     .hero-desc {
@@ -1871,16 +1993,18 @@
       line-height: 1.48;
       max-width: 31ch;
     }
-    .hero-acronym { padding: 0 12px; }
+    .hero-acronym {
+      padding: 0;
+      gap: 8px;
+    }
     .hero-acronym .letter-block {
       padding: 8px 10px 7px;
-      min-width: 48px;
       border-radius: 10px;
     }
     .hero-acronym .letter-block .big { font-size: 24px; }
     .hero-acronym .letter-block .small {
       font-size: 8px;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.06em;
     }
     .gold-btn,
     .ghost-btn {
@@ -1902,6 +2026,9 @@
     .stat-num { font-size: 42px; }
     .stat-label { font-size: 10px; }
     .contact-row .c-val { font-size: 14px; }
+    .subpage-hero-copy {
+      max-width: 100%;
+    }
     .mobile-menu {
       padding-top: calc(var(--nav-h) + max(24px, env(safe-area-inset-top)) + 8px);
       padding-bottom: max(28px, env(safe-area-inset-bottom));
@@ -1914,6 +2041,7 @@
   @media (max-width: 360px) {
     .hero-bg { background-position: center, center, center, center, center, center 50%; }
     .hero-eyebrow { display: none; }
+    .marquee-bar { padding: 12px 0; }
     .marquee-track span {
       font-size: 13px;
       padding: 0 12px;
@@ -1929,11 +2057,12 @@
     .hero-title {
       font-size: clamp(30px, 12.2vw, 40px);
       letter-spacing: 0;
-      white-space: nowrap;
+      white-space: normal;
     }
     .hero-title .italic-line {
-      font-size: 16px;
-      margin-top: 1px;
+      font-size: 15px;
+      margin-top: 4px;
+      min-width: 0;
     }
     .hero-desc { font-size: 13px; }
     .stats-grid { grid-template-columns: 1fr; }

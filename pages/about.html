@@ -34,13 +34,15 @@
 </script>
 <link rel="stylesheet" href="../assets/css/main.css" />
 </head>
-<body>
+<body class="subpage about-page">
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
   <a href="../index.html#home" onclick="closeMobileMenu()">Home</a>
   <a href="about.html" onclick="closeMobileMenu()">About</a>
   <a href="../index.html#services" onclick="closeMobileMenu()">Services</a>
+  <a href="../index.html#sermons" onclick="closeMobileMenu()">Sermons</a>
   <a href="projects.html" onclick="closeMobileMenu()">Projects</a>
+  <a href="../index.html#ministry-team" onclick="closeMobileMenu()">Team</a>
   <a href="../index.html#events" onclick="closeMobileMenu()">Events</a>
   <a href="../index.html#donate" onclick="closeMobileMenu()">Donate</a>
   <a href="contact.html" onclick="closeMobileMenu()">Contact</a>
@@ -54,24 +56,25 @@
     <div class="nav-links">
       <a href="about.html">About</a>
       <a href="../index.html#services">Services</a>
+      <a href="../index.html#sermons">Sermons</a>
       <a href="projects.html">Projects</a>
       <a href="../index.html#ministry-team">Team</a>
       <a href="../index.html#events">Events</a>
       <a href="contact.html">Contact</a>
     </div>
     <a href="../index.html#donate" class="nav-cta">Give Now</a>
-    <div class="hamburger" onclick="openMobileMenu()">
+    <div class="hamburger" onclick="openMobileMenu()" aria-label="Open navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<section id="about-us" style="padding-top:140px;">
+<section id="about-us" class="subpage-section subpage-intro-section">
   <div class="container">
-    <div class="services-header" style="max-width:760px;">
+    <div class="services-header subpage-hero">
       <div class="section-label">About Rock Mission</div>
       <h1 class="section-heading">Built On The <span class="accent">Rock</span></h1>
-      <p class="hero-desc" style="opacity:1; animation:none; max-width:none; margin-top:20px;">
+      <p class="hero-desc subpage-hero-copy">
         We are a non-profit Christian community outreach ministry based in Eersterivier, Cape Town, South Africa. Our mission is to bring the Gospel and practical support to the Cape Flats through consistent service, discipleship, and compassionate outreach.
       </p>
     </div>
@@ -102,7 +105,7 @@
 
 <footer>
   <div class="container">
-    <div class="footer-bottom" style="padding-top:0; border-top:none;">
+    <div class="footer-bottom subpage-footer-bottom">
       <span>© 2022 Rock Mission Ministries</span>
       <span class="footer-credit">
         <span>Built with ❤️ by</span>
