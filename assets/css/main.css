@@ -2065,11 +2065,12 @@
     .hero-logo-wrap {
       padding: 4px;
       margin-top: -24px;
+      margin-bottom: 12px;
     }
     .hero-logo { width: clamp(212px, 52vw, 320px); }
     .hero-slogan-crop {
       width: clamp(230px, 62vw, 360px);
-      top: calc(100% - 50px);
+      top: calc(100% - 30px);
       transform: translateX(calc(-50% + 10px));
     }
     .hero-title {
@@ -2347,7 +2348,7 @@
     }
     .hero-slogan-crop {
       width: clamp(214px, 60vw, 330px);
-      top: calc(100% - 110px);
+      top: calc(100% - 35px);
       transform: translateX(calc(-50% + 8px));
     }
     .hero-desc {
