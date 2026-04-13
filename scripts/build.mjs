@@ -86,6 +86,13 @@ async function build() {
     cpSync(imagesSrc, imagesOut, { recursive: true });
   }
 
+  const videosSrc = join(ROOT, 'assets', 'videos');
+  const videosOut = join(DIST, 'assets', 'videos');
+  if (existsSync(videosSrc)) {
+    ensureDir(videosOut);
+    cpSync(videosSrc, videosOut, { recursive: true });
+  }
+
   if (existsSync(join(ROOT, 'README.md'))) {
     copyFileSync(join(ROOT, 'README.md'), join(DIST, 'README.md'));
   }
