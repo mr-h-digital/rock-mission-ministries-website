@@ -178,47 +178,94 @@
     if (!videos.length) return;
 
     let current = 0;
+    let started = false;
     let transitioning = false;
     const FADE = 1.5; // seconds — matches CSS transition
 
+    function tryPlay(v) {
+      var p = v.play();
+      if (p && typeof p.then === 'function') {
+        p.catch(function () {
+          // Autoplay blocked — wait for first user interaction
+        });
+      }
+    }
+
     function activate(index) {
-      const v = videos[index];
+      var v = videos[index];
       v.currentTime = 0;
-      v.play().catch(function () {});
       v.classList.add('is-active');
+      tryPlay(v);
     }
 
     function crossfade() {
       if (transitioning) return;
       transitioning = true;
-      const next = (current + 1) % videos.length;
-      // Begin loading the one after next
-      const upcoming = (next + 1) % videos.length;
-      videos[upcoming].preload = 'auto';
+      var next = (current + 1) % videos.length;
+      var upcoming = (next + 1) % videos.length;
+      // Eagerly load the one after next
+      if (videos[upcoming].preload !== 'auto') videos[upcoming].preload = 'auto';
       activate(next);
       videos[current].classList.remove('is-active');
       current = next;
       setTimeout(function () { transitioning = false; }, (FADE + 0.2) * 1000);
     }
 
+    function startCarousel() {
+      if (started) return;
+      started = true;
+      activate(0);
+    }
+
     videos.forEach(function (v, i) {
-      // Trigger crossfade when within FADE seconds of end
+      // Crossfade FADE seconds before the end
       v.addEventListener('timeupdate', function () {
         if (i !== current || transitioning) return;
         if (v.duration && v.currentTime >= v.duration - FADE) crossfade();
       });
-      // Fallback: if ended event fires before timeupdate catches it
+      // Fallback if ended fires first
       v.addEventListener('ended', function () {
         if (i === current && !transitioning) crossfade();
       });
-      // Preload next video once the current one can play
+      // Progressively load next video
       v.addEventListener('canplay', function () {
+        if (i === 0 && !started) startCarousel();
         var nextIdx = (i + 1) % videos.length;
-        if (videos[nextIdx].preload === 'metadata') {
-          videos[nextIdx].preload = 'auto';
-        }
+        if (videos[nextIdx].preload === 'metadata') videos[nextIdx].preload = 'auto';
+      });
+      // If load stalls, still mark started
+      v.addEventListener('loadedmetadata', function () {
+        if (i === 0 && !started) startCarousel();
       });
     });
 
-    activate(0);
+    // Attempt immediate autoplay (works on desktop + some Android)
+    startCarousel();
+
+    // Mobile fallback: start on first user interaction if autoplay was blocked
+    function onFirstInteraction() {
+      if (!started) startCarousel();
+      // Resume current video if paused by browser
+      var v = videos[current];
+      if (v.paused) tryPlay(v);
+      document.removeEventListener('touchstart', onFirstInteraction);
+      document.removeEventListener('pointerdown', onFirstInteraction);
+    }
+    document.addEventListener('touchstart', onFirstInteraction, { passive: true, once: true });
+    document.addEventListener('pointerdown', onFirstInteraction, { passive: true, once: true });
+
+    // Pause when hero scrolls off-screen, resume when back (saves mobile battery)
+    if ('IntersectionObserver' in window) {
+      var heroObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          var v = videos[current];
+          if (entry.isIntersecting) {
+            if (v.paused) tryPlay(v);
+          } else {
+            v.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+      heroObserver.observe(document.getElementById('home') || bg);
+    }
   }());
