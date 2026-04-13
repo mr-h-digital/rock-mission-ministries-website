@@ -169,3 +169,56 @@
   }, { passive: true });
 
   updateCinematicShift();
+
+  // ─── HERO VIDEO CAROUSEL ──────────────────────────────
+  (function () {
+    const bg = document.getElementById('heroVideoBg');
+    if (!bg) return;
+    const videos = Array.from(bg.querySelectorAll('.hero-video'));
+    if (!videos.length) return;
+
+    let current = 0;
+    let transitioning = false;
+    const FADE = 1.5; // seconds — matches CSS transition
+
+    function activate(index) {
+      const v = videos[index];
+      v.currentTime = 0;
+      v.play().catch(function () {});
+      v.classList.add('is-active');
+    }
+
+    function crossfade() {
+      if (transitioning) return;
+      transitioning = true;
+      const next = (current + 1) % videos.length;
+      // Begin loading the one after next
+      const upcoming = (next + 1) % videos.length;
+      videos[upcoming].preload = 'auto';
+      activate(next);
+      videos[current].classList.remove('is-active');
+      current = next;
+      setTimeout(function () { transitioning = false; }, (FADE + 0.2) * 1000);
+    }
+
+    videos.forEach(function (v, i) {
+      // Trigger crossfade when within FADE seconds of end
+      v.addEventListener('timeupdate', function () {
+        if (i !== current || transitioning) return;
+        if (v.duration && v.currentTime >= v.duration - FADE) crossfade();
+      });
+      // Fallback: if ended event fires before timeupdate catches it
+      v.addEventListener('ended', function () {
+        if (i === current && !transitioning) crossfade();
+      });
+      // Preload next video once the current one can play
+      v.addEventListener('canplay', function () {
+        var nextIdx = (i + 1) % videos.length;
+        if (videos[nextIdx].preload === 'metadata') {
+          videos[nextIdx].preload = 'auto';
+        }
+      });
+    });
+
+    activate(0);
+  }());
