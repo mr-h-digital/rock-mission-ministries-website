@@ -2157,19 +2157,21 @@
     .footer-top { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     .hero-acronym {
-      width: 100%;
-      margin-left: 0;
+      width: auto;
+      max-width: 240px;
+      margin-left: auto;
+      margin-right: auto;
       margin-top: 0;
       padding: 0;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      justify-content: stretch;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      justify-items: center;
     }
     .hero-acronym .letter-block {
       width: 100%;
       min-width: 0;
-      padding: 10px 12px 8px;
+      padding: 12px 14px 10px;
       border-radius: 12px;
     }
     .hero-acronym .letter-block .big { font-size: 28px; }
@@ -2355,11 +2357,19 @@
       max-width: 31ch;
     }
     .hero-acronym {
+      width: auto;
+      max-width: 220px;
+      margin-left: auto;
+      margin-right: auto;
       padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 8px;
+      justify-items: center;
     }
     .hero-acronym .letter-block {
-      padding: 8px 10px 7px;
+      width: 100%;
+      padding: 10px 12px 8px;
       border-radius: 10px;
     }
     .hero-acronym .letter-block .big { font-size: 24px; }
