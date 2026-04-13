@@ -14,6 +14,7 @@
     --grad-dark: linear-gradient(180deg, #101521 0%, #18263a 100%);
     --hero-radial: radial-gradient(circle at 18% 12%, rgba(255,47,165,0.22) 0%, transparent 44%), radial-gradient(circle at 84% 24%, rgba(32,227,207,0.26) 0%, transparent 48%), radial-gradient(circle at 48% 92%, rgba(48,183,242,0.16) 0%, transparent 46%);
     --hero-photo: url("../images/congregation-photo.jpg");
+    --team-office-photo: url("../images/office-profile-card-backdrop.jpg");
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'Outfit', sans-serif;
     --font-italic: 'Playfair Display', serif;
@@ -1112,6 +1113,38 @@
     position: relative;
   }
   .project-card.featured .project-thumb { aspect-ratio: 4/5; }
+  .project-thumb.community-thumb {
+    background:
+      linear-gradient(180deg, rgba(16,21,33,0.2) 0%, rgba(16,21,33,0.48) 100%),
+      url("../images/community-hope-project.jpg") center / cover no-repeat;
+  }
+  .project-thumb.community-thumb .project-thumb-inner {
+    display: none;
+  }
+  .project-thumb.youth-thumb {
+    background:
+      linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
+      url("../images/youth-empowerment.jpg") center / cover no-repeat;
+  }
+  .project-thumb.youth-thumb .project-thumb-inner {
+    display: none;
+  }
+  .project-thumb.addiction-thumb {
+    background:
+      linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
+      url("../images/addiction-recovery-support.jpg") center / cover no-repeat;
+  }
+  .project-thumb.addiction-thumb .project-thumb-inner {
+    display: none;
+  }
+  .project-thumb.family-thumb {
+    background:
+      linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
+      url("../images/family-restoration.jpg") center / cover no-repeat;
+  }
+  .project-thumb.family-thumb .project-thumb-inner {
+    display: none;
+  }
   .project-thumb-inner {
     position: absolute;
     inset: 0;
@@ -1155,57 +1188,124 @@
   .team-header { max-width: 560px; margin-bottom: 64px; }
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
   }
   .team-card {
+    position: relative;
+    text-align: center;
+    min-height: 332px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    background:
+      linear-gradient(180deg, rgba(16, 28, 43, 0.08) 0%, rgba(16, 28, 43, 0.24) 56%, rgba(16, 28, 43, 0.38) 100%),
+      var(--team-office-photo) center / cover no-repeat;
+    overflow: visible;
+    isolation: isolate;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 14px 26px rgba(6, 14, 24, 0.24);
+  }
+  .team-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(160px 120px at 10% 22%, rgba(94, 171, 121, 0.14), transparent 72%),
+      radial-gradient(180px 130px at 86% 18%, rgba(77, 157, 113, 0.12), transparent 74%),
+      linear-gradient(180deg, rgba(9, 16, 28, 0) 0%, rgba(9, 16, 28, 0.14) 72%, rgba(9, 16, 28, 0.28) 100%);
+    opacity: 0.72;
+    border-radius: inherit;
+    z-index: 0;
+  }
+  .team-card::after {
+    content: '';
+    position: absolute;
+    inset: auto 10px 10px 10px;
+    height: 102px;
+    border-radius: 14px;
+    background:
+      linear-gradient(180deg, rgba(30, 43, 60, 0.52) 0%, rgba(20, 30, 46, 0.66) 100%),
+      linear-gradient(90deg, rgba(70, 48, 26, 0.2) 0%, rgba(164, 118, 74, 0.18) 38%, rgba(79, 54, 31, 0.28) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .team-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(32,227,207,0.48);
+    box-shadow: 0 22px 34px rgba(8, 16, 28, 0.34);
+  }
+  .team-card .t-name,
+  .team-card .t-role {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    z-index: 5;
     text-align: center;
   }
   .team-avatar {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 16px;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    margin-bottom: 16px;
+    width: min(90%, 280px);
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
     font-size: 48px;
     color: var(--gold);
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s;
-  }
-  .team-card:hover .team-avatar { border-color: rgba(32,227,207,0.5); box-shadow: 0 14px 32px rgba(5, 14, 26, 0.3); }
-  .team-avatar::after {
-    content: '';
     position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(32,227,207,0.14) 0%, rgba(255,47,165,0.08) 58%, transparent 85%);
+    top: -72px;
+    bottom: 0;
+    left: 50%;
+    overflow: visible;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 4;
+    transform: translateX(-50%);
+    box-shadow: none;
+  }
+  .team-card:hover .team-avatar {
+    transform: translateX(-50%) translateY(-8px) scale(1.03);
+    box-shadow: none;
+  }
+  .team-avatar::after {
+    content: none;
   }
   .team-avatar.has-photo img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center 58%;
+    object-fit: contain;
+    object-position: center bottom;
     z-index: 0;
+    filter: drop-shadow(0 10px 18px rgba(4, 10, 18, 0.34));
   }
   .team-avatar.has-photo::after {
-    background: linear-gradient(180deg, rgba(16,21,33,0.02) 45%, rgba(16,21,33,0.28) 100%);
-    z-index: 1;
+    background: none;
+    z-index: auto;
   }
   .team-card .t-name {
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 21px;
     color: var(--white);
     letter-spacing: 0.02em;
-    margin-bottom: 4px;
+    margin: 0;
+    bottom: 46px;
+    line-height: 1.02;
+    text-shadow: 0 2px 8px rgba(4, 10, 18, 0.72);
   }
-  .team-card .t-role { font-size: 12px; color: var(--muted); letter-spacing: 0.08em; }
+  .team-card .t-role {
+    font-size: 12px;
+    color: rgba(230, 246, 237, 0.82);
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    margin: 0;
+    bottom: 20px;
+    text-shadow: 0 2px 6px rgba(4, 10, 18, 0.68);
+  }
 
   /* ─── GOSPEL CTA ─────────────────────────────────── */
   .gospel-cta {
@@ -1820,6 +1920,13 @@
     .project-card.featured { grid-row: auto; }
     .project-card.featured .project-thumb { aspect-ratio: 16/9; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .team-card {
+      padding: 114px 16px 22px;
+    }
+    .team-avatar {
+      width: min(82%, 228px);
+      top: -64px;
+    }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -1993,7 +2100,52 @@
     }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat-item:nth-child(2) { border-right: none; }
-    .team-grid { grid-template-columns: 1fr; }
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 72px;
+    }
+    .team-card {
+      width: min(100%, 430px);
+      height: 318px;
+      min-height: 318px;
+      max-width: none;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 14px 16px;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .team-avatar {
+      width: min(94%, 292px);
+      top: -52px;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
+    .team-card::after {
+      inset: auto 10px 10px 10px;
+      height: 92px;
+    }
+    .team-card .t-name,
+    .team-card .t-role {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      z-index: 6;
+      margin: 0;
+    }
+    .team-card .t-name {
+      font-size: clamp(26px, 7vw, 32px);
+      letter-spacing: 0.01em;
+      margin-bottom: 4px;
+    }
+    .team-card .t-role {
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      margin-bottom: 2px;
+    }
     .service-card { padding: 28px 20px; }
     .service-card.special-highlight .visit-cta {
       width: 100%;
@@ -2288,7 +2440,28 @@
       padding: 14px 10px;
     }
     .stat-item:last-child { border-bottom: none; }
-    .team-grid { gap: 16px; }
+    .team-grid { gap: 64px; }
+    .team-card {
+      width: min(100%, 360px);
+      height: 290px;
+      min-height: 290px;
+      padding: 0 12px 14px;
+    }
+    .team-avatar {
+      width: min(94%, 238px);
+      top: -44px;
+      bottom: 0;
+    }
+    .team-card::after {
+      height: 84px;
+    }
+    .team-card .t-name {
+      font-size: clamp(22px, 8.2vw, 28px);
+    }
+    .team-card .t-role {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+    }
     .donate-amt {
       flex: 1 1 100%;
       min-width: 0;
