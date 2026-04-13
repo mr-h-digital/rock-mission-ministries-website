@@ -172,22 +172,22 @@
 
   // ─── HERO VIDEO CAROUSEL ──────────────────────────────
   (function () {
-    const bg = document.getElementById('heroVideoBg');
+    var bg = document.getElementById('heroVideoBg');
     if (!bg) return;
-    const videos = Array.from(bg.querySelectorAll('.hero-video'));
+    var videos = Array.from(bg.querySelectorAll('.hero-video'));
     if (!videos.length) return;
 
-    let current = 0;
-    let started = false;
-    let transitioning = false;
-    const FADE = 1.5; // seconds — matches CSS transition
+    var current = 0;
+    var transitioning = false;
+    var FADE = 1.5;
 
     function tryPlay(v) {
+      v.muted = true;
+      // Explicitly load before play — required by Android Chrome in some cases
+      if (v.readyState === 0) v.load();
       var p = v.play();
       if (p && typeof p.then === 'function') {
-        p.catch(function () {
-          // Autoplay blocked — wait for first user interaction
-        });
+        p.catch(function () { /* blocked — user interaction fallback handles it */ });
       }
     }
 
@@ -201,71 +201,49 @@
     function crossfade() {
       if (transitioning) return;
       transitioning = true;
-      var next = (current + 1) % videos.length;
-      var upcoming = (next + 1) % videos.length;
-      // Eagerly load the one after next
-      if (videos[upcoming].preload !== 'auto') videos[upcoming].preload = 'auto';
-      activate(next);
-      videos[current].classList.remove('is-active');
-      current = next;
-      setTimeout(function () { transitioning = false; }, (FADE + 0.2) * 1000);
-    }
-
-    function startCarousel() {
-      if (started) return;
-      started = true;
-      activate(0);
+      var prev = current;
+      current = (current + 1) % videos.length;
+      // Pre-load the next-next video in the background
+      var upcoming = (current + 1) % videos.length;
+      if (videos[upcoming].preload === 'none') videos[upcoming].preload = 'auto';
+      activate(current);
+      setTimeout(function () {
+        videos[prev].classList.remove('is-active');
+        videos[prev].pause();
+      }, (FADE + 0.1) * 1000);
+      setTimeout(function () { transitioning = false; }, (FADE + 0.3) * 1000);
     }
 
     videos.forEach(function (v, i) {
-      // Crossfade FADE seconds before the end
       v.addEventListener('timeupdate', function () {
         if (i !== current || transitioning) return;
         if (v.duration && v.currentTime >= v.duration - FADE) crossfade();
       });
-      // Fallback if ended fires first
       v.addEventListener('ended', function () {
         if (i === current && !transitioning) crossfade();
       });
-      // Progressively load next video
-      v.addEventListener('canplay', function () {
-        if (i === 0 && !started) startCarousel();
-        var nextIdx = (i + 1) % videos.length;
-        if (videos[nextIdx].preload === 'metadata') videos[nextIdx].preload = 'auto';
-      });
-      // If load stalls, still mark started
-      v.addEventListener('loadedmetadata', function () {
-        if (i === 0 && !started) startCarousel();
-      });
     });
 
-    // Attempt immediate autoplay (works on desktop + some Android)
-    startCarousel();
+    // Start the first video (it already has is-active from HTML)
+    tryPlay(videos[0]);
 
-    // Mobile fallback: start on first user interaction if autoplay was blocked
-    function onFirstInteraction() {
-      if (!started) startCarousel();
-      // Resume current video if paused by browser
-      var v = videos[current];
-      if (v.paused) tryPlay(v);
-      document.removeEventListener('touchstart', onFirstInteraction);
-      document.removeEventListener('pointerdown', onFirstInteraction);
+    // Mobile fallback: unlock videos on first touch/click
+    function unlockOnInteraction() {
+      tryPlay(videos[current]);
+      document.removeEventListener('touchstart', unlockOnInteraction);
+      document.removeEventListener('click', unlockOnInteraction);
     }
-    document.addEventListener('touchstart', onFirstInteraction, { passive: true, once: true });
-    document.addEventListener('pointerdown', onFirstInteraction, { passive: true, once: true });
+    document.addEventListener('touchstart', unlockOnInteraction, { passive: true, once: true });
+    document.addEventListener('click', unlockOnInteraction, { passive: true, once: true });
 
-    // Pause when hero scrolls off-screen, resume when back (saves mobile battery)
+    // Pause/resume as hero scrolls in and out of view
     if ('IntersectionObserver' in window) {
-      var heroObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          var v = videos[current];
-          if (entry.isIntersecting) {
-            if (v.paused) tryPlay(v);
-          } else {
-            v.pause();
-          }
-        });
-      }, { threshold: 0.1 });
-      heroObserver.observe(document.getElementById('home') || bg);
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          tryPlay(videos[current]);
+        } else {
+          videos[current].pause();
+        }
+      }, { threshold: 0.1 }).observe(document.getElementById('home') || bg);
     }
   }());
