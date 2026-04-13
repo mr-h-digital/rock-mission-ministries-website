@@ -388,7 +388,6 @@
     align-self: center;
     padding: 10px;
     overflow: visible;
-    transform-style: preserve-3d;
     animation: none;
     z-index: 2;
   }
@@ -412,7 +411,7 @@
   }
   .hero-logo-wrap::after {
     inset: 8% 6%;
-    transform: translate3d(0, 0, 22px) rotate(-14deg);
+    transform: rotate(-14deg);
     border-radius: 50%;
     background: linear-gradient(115deg, rgba(255,255,255,0) 16%, rgba(255,255,255,0.2) 34%, rgba(255,255,255,0.04) 48%, rgba(255,255,255,0) 66%);
     mix-blend-mode: screen;
@@ -426,7 +425,6 @@
     object-fit: contain;
     flex-shrink: 0;
     transform-origin: center center;
-    transform-style: preserve-3d;
     transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
     filter: drop-shadow(0 0 18px rgba(32,227,207,0.28)) drop-shadow(0 0 40px rgba(255,47,165,0.15));
     -webkit-tap-highlight-color: transparent;
@@ -472,13 +470,13 @@
   .hero-title-row:hover .hero-logo-wrap::after,
   .hero-logo-wrap:hover::after {
     opacity: 1;
-    transform: translate3d(8px, -6px, 28px) rotate(-14deg);
+    transform: translate(8px, -6px) rotate(-14deg);
     animation: hero-logo-sheen 1.35s ease forwards;
   }
   .hero-title-row:hover .hero-logo,
   .hero-logo-wrap:hover .hero-logo,
   .hero-logo:hover {
-    transform: rotateY(-18deg) rotateX(10deg) scale(1.08) translateZ(20px);
+    transform: scale(1.08);
     filter:
       drop-shadow(16px 18px 28px rgba(6, 16, 28, 0.34))
       drop-shadow(0 0 24px rgba(32,227,207,0.3))
@@ -492,12 +490,12 @@
   .hero-title-row:active .hero-logo-wrap::after,
   .hero-logo-wrap:active::after {
     opacity: 1;
-    transform: translate3d(-4px, 2px, 18px) rotate(10deg);
+    transform: translate(-4px, 2px) rotate(10deg);
   }
   .hero-title-row:active .hero-logo,
   .hero-logo-wrap:active .hero-logo,
   .hero-logo:active {
-    transform: rotateY(16deg) rotateX(-8deg) scale(1.03) translateZ(12px);
+    transform: scale(1.03);
     filter:
       drop-shadow(10px 12px 22px rgba(6, 16, 28, 0.3))
       drop-shadow(0 0 20px rgba(32,227,207,0.26))
@@ -1953,24 +1951,25 @@
     .hero-title-row {
       flex-direction: column-reverse;
       align-items: center;
-      gap: 18px;
+      gap: 84px;
       margin-top: 28px;
-      margin-bottom: 78px;
+      margin-bottom: 148px;
     }
     .hero-logo-wrap {
       padding: 4px;
+      margin-top: -24px;
     }
     .hero-logo { width: clamp(212px, 52vw, 320px); }
     .hero-slogan-crop {
       width: clamp(230px, 62vw, 360px);
-      top: calc(100% - 120px);
+      top: calc(100% - 50px);
       transform: translateX(calc(-50% + 10px));
     }
     .hero-title {
       font-size: clamp(46px, 15.8vw, 64px);
       width: min(100%, 12ch);
       margin-top: 20px;
-      margin-bottom: 12px;
+      margin-bottom: -64px;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -2008,7 +2007,7 @@
     .hero-acronym {
       width: 100%;
       margin-left: 0;
-      margin-top: 6px;
+      margin-top: 0;
       padding: 0;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2122,14 +2121,15 @@
     }
     .hero-title-row {
       margin-top: 34px;
-      margin-bottom: 88px;
+      margin-bottom: 158px;
+      gap: 84px;
     }
     .hero-slogan-crop {
-      top: calc(100% - 132px);
+      top: calc(100% - 60px);
       transform: translateX(calc(-50% + 12px));
     }
     .hero-acronym {
-      margin-top: 14px;
+      margin-top: 0;
     }
   }
 
@@ -2153,7 +2153,7 @@
     .hero-title-row:active .hero-logo-wrap::after,
     .hero-logo-wrap:active::after {
       opacity: 0;
-      transform: translate3d(0, 0, 22px) rotate(-14deg);
+      transform: rotate(-14deg);
     }
     .thank-you-page .thank-you-card,
     .thank-you-page .thank-you-badge,
