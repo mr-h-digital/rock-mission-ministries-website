@@ -1200,6 +1200,141 @@
   }
   .project-body p { font-size: 14px; color: var(--muted); line-height: 1.65; }
 
+  /* ─── KINGDOM DRIP IMPACT ───────────────────────── */
+  #kingdom-drip-impact {
+    padding: 120px 0;
+    background:
+      radial-gradient(circle at 88% 16%, rgba(255,47,165,0.14), transparent 38%),
+      radial-gradient(circle at 14% 82%, rgba(32,227,207,0.13), transparent 40%),
+      linear-gradient(180deg, #121b2c 0%, #1a2940 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .kingdom-drip-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 38px;
+    align-items: start;
+  }
+  .kingdom-drip-copy p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.72;
+    margin-bottom: 16px;
+    max-width: 64ch;
+  }
+  .kingdom-drip-hashtag {
+    margin-top: 8px;
+    margin-bottom: 28px;
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4.8vw, 52px);
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    background: var(--grad-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .kingdom-drip-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .kingdom-drip-right {
+    display: grid;
+    gap: 14px;
+  }
+  .kingdom-drip-visual {
+    position: relative;
+    min-height: 260px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+      linear-gradient(160deg, rgba(16,21,33,0.6), rgba(16,21,33,0.14)),
+      url("../images/kingdom-drip-store-hero-bg.png") center / cover no-repeat;
+    box-shadow: 0 16px 30px rgba(5, 11, 20, 0.32);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 18px;
+  }
+  .kingdom-drip-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 12%, rgba(32,227,207,0.35), transparent 38%),
+      linear-gradient(180deg, rgba(16,21,33,0.06) 0%, rgba(16,21,33,0.62) 100%);
+    pointer-events: none;
+  }
+  .kingdom-drip-visual-logo,
+  .kingdom-drip-visual-url {
+    position: relative;
+    z-index: 1;
+  }
+  .kingdom-drip-visual-logo {
+    width: clamp(70px, 7vw, 98px);
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid rgba(32,227,207,0.46);
+    background: rgba(8, 15, 26, 0.7);
+    padding: 7px;
+  }
+  .kingdom-drip-visual-url {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #d5fffb;
+    border: 1px solid rgba(32,227,207,0.4);
+    border-radius: 999px;
+    background: rgba(9, 18, 30, 0.75);
+    padding: 8px 12px;
+  }
+  .kingdom-drip-cards {
+    display: grid;
+    gap: 14px;
+  }
+  .kingdom-drip-card {
+    background: rgba(16,21,33,0.82);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    box-shadow: 0 14px 26px rgba(5, 11, 20, 0.3);
+  }
+  .kingdom-drip-card .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .kingdom-drip-card .label::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 999px;
+  }
+  .kingdom-drip-card h3 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    line-height: 0.96;
+    letter-spacing: 0.02em;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .kingdom-drip-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.62;
+  }
+
   /* ─── TEAM ───────────────────────────────────────── */
   #ministry-team {
     padding: 120px 0;
@@ -1938,6 +2073,7 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-row: auto; }
     .project-card.featured .project-thumb { aspect-ratio: 16/9; }
+    .kingdom-drip-grid { grid-template-columns: 1fr; gap: 28px; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .team-card {
       padding: 114px 16px 22px;
@@ -1965,6 +2101,7 @@
     #services,
     #sermons,
     #projects,
+    #kingdom-drip-impact,
     #ministry-team,
     #events,
     #donate,
