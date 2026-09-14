@@ -231,7 +231,18 @@
       linear-gradient(160deg, rgba(24,38,58,0.96), rgba(16,21,33,0.96));
     box-shadow: 0 24px 60px rgba(4, 10, 20, 0.34);
   }
+  .rockidz-visual-backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg, rgba(16,21,33,0.2), rgba(16,21,33,0.58)),
+      url("../images/rockidz-sign-in-page-background-image.webp") center/cover no-repeat;
+    opacity: 0.72;
+    transform: scale(1.04);
+  }
   .rockidz-visual-badge {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -246,30 +257,19 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
   }
-  .rockidz-visual-icon {
-    margin-top: 22px;
-    font-size: 48px;
-    line-height: 1;
-  }
-  .rockidz-visual-title {
-    margin-top: 18px;
-    font-family: var(--font-display);
-    font-size: clamp(48px, 5vw, 74px);
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    color: var(--white);
-  }
-  .rockidz-visual-subtitle {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-top: 8px;
+  .rockidz-visual-logo {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: min(100%, 390px);
+    margin: 20px auto 0;
+    filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.26));
   }
   .rockidz-visual-url {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
-    margin-top: 22px;
+    margin-top: 16px;
     padding: 10px 16px;
     border-radius: 999px;
     background: rgba(255,255,255,0.08);
