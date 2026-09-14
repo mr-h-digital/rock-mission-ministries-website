@@ -2188,6 +2188,7 @@
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured { grid-row: auto; }
     .project-card.featured .project-thumb { aspect-ratio: 16/9; }
+    .rockidz-grid { grid-template-columns: 1fr; gap: 28px; }
     .kingdom-drip-grid { grid-template-columns: 1fr; gap: 28px; }
     .team-grid { grid-template-columns: repeat(2, 1fr); }
     .team-card {
@@ -2215,6 +2216,7 @@
     #about-us,
     #services,
     #sermons,
+    #rockidz-kids-corner,
     #projects,
     #kingdom-drip-impact,
     #ministry-team,
@@ -2274,6 +2276,38 @@
     .projects-header,
     .team-header,
     .events-header { margin-bottom: 40px; }
+    .rockidz-copy p {
+      font-size: 15px;
+      line-height: 1.62;
+      max-width: 100%;
+    }
+    .rockidz-actions {
+      width: 100%;
+      gap: 12px;
+    }
+    .rockidz-right {
+      gap: 14px;
+    }
+    .rockidz-visual {
+      min-height: 220px;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    .rockidz-visual-logo {
+      width: min(100%, 320px);
+      margin-top: 14px;
+    }
+    .rockidz-card {
+      padding: 20px 18px;
+      border-radius: 18px;
+    }
+    .rockidz-card h3 {
+      font-size: 28px;
+    }
+    .rockidz-card p {
+      font-size: 14px;
+      line-height: 1.62;
+    }
     .event-item {
       flex-direction: column;
       align-items: flex-start;
@@ -2326,6 +2360,55 @@
     .section-label::before { width: 24px; }
     .section-heading { font-size: clamp(32px, 12vw, 46px); }
     .hero-content { padding: 48px 14px 68px; }
+    .rockidz-grid {
+      gap: 22px;
+      padding: 88px 0 24px;
+    }
+    .rockidz-copy p {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+    .rockidz-actions {
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+    .rockidz-actions .gold-btn,
+    .rockidz-actions .ghost-btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .rockidz-visual {
+      min-height: 190px;
+      padding: 16px;
+    }
+    .rockidz-visual-badge {
+      min-width: 54px;
+      padding: 5px 10px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
+    .rockidz-visual-logo {
+      width: min(100%, 260px);
+      margin-top: 12px;
+    }
+    .rockidz-visual-url {
+      margin-top: 12px;
+      padding: 8px 12px;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      overflow-wrap: anywhere;
+    }
+    .rockidz-card {
+      padding: 18px 16px;
+    }
+    .rockidz-card h3 {
+      font-size: 24px;
+    }
+    .rockidz-card .label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+    }
     .hero-title-row {
       flex-direction: column-reverse;
       align-items: center;
@@ -2655,6 +2738,22 @@
       font-size: 11px;
       padding: 11px 14px;
     }
+    .rockidz-grid {
+      padding-top: 76px;
+    }
+    .rockidz-visual {
+      min-height: 176px;
+      padding: 14px;
+    }
+    .rockidz-visual-logo {
+      width: min(100%, 230px);
+    }
+    .rockidz-visual-url {
+      font-size: 10px;
+      padding: 8px 10px;
+    }
+    .rockidz-card h3 { font-size: 20px; }
+    .rockidz-card p { font-size: 13px; }
     .service-card,
     .donate-card { padding: 20px 16px; }
     .project-body { padding: 14px; }
