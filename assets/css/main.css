@@ -248,7 +248,7 @@
       linear-gradient(180deg, rgba(7, 13, 24, 0.24) 0%, rgba(7, 13, 24, 0.78) 100%),
       radial-gradient(circle at top left, rgba(32,227,207,0.2), transparent 36%),
       radial-gradient(circle at bottom right, rgba(255,47,165,0.18), transparent 40%),
-      url("../images/armory-background.png") center right / cover no-repeat,
+      url("../images/armory-background.webp") center right / cover no-repeat,
       linear-gradient(160deg, rgba(16,21,33,0.92), rgba(24,38,58,0.92));
     box-shadow: 0 16px 30px rgba(5, 11, 20, 0.32);
     display: flex;
