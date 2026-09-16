@@ -13,8 +13,8 @@
     --grad-gold: linear-gradient(120deg, #20e3cf 0%, #30b7f2 50%, #ff2fa5 100%);
     --grad-dark: linear-gradient(180deg, #101521 0%, #18263a 100%);
     --hero-radial: radial-gradient(circle at 18% 12%, rgba(255,47,165,0.22) 0%, transparent 44%), radial-gradient(circle at 84% 24%, rgba(32,227,207,0.26) 0%, transparent 48%), radial-gradient(circle at 48% 92%, rgba(48,183,242,0.16) 0%, transparent 46%);
-    --hero-photo: url("../images/congregation-photo.jpg");
-    --team-office-photo: url("../images/office-profile-card-backdrop.jpg");
+    --hero-photo: url("../images/congregation-photo.webp");
+    --team-office-photo: url("../images/office-profile-card-backdrop.webp");
     --font-display: 'Bebas Neue', sans-serif;
     --font-body: 'Outfit', sans-serif;
     --font-italic: 'Playfair Display', serif;
@@ -1276,7 +1276,7 @@
   .project-thumb.community-thumb {
     background:
       linear-gradient(180deg, rgba(16,21,33,0.2) 0%, rgba(16,21,33,0.48) 100%),
-      url("../images/community-hope-project.jpg") center / cover no-repeat;
+      url("../images/community-hope-project.webp") center / cover no-repeat;
   }
   .project-thumb.community-thumb .project-thumb-inner {
     display: none;
@@ -1284,7 +1284,7 @@
   .project-thumb.youth-thumb {
     background:
       linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
-      url("../images/youth-empowerment.jpg") center / cover no-repeat;
+      url("../images/youth-empowerment.webp") center / cover no-repeat;
   }
   .project-thumb.youth-thumb .project-thumb-inner {
     display: none;
@@ -1292,7 +1292,7 @@
   .project-thumb.addiction-thumb {
     background:
       linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
-      url("../images/addiction-recovery-support.jpg") center / cover no-repeat;
+      url("../images/addiction-recovery-support.webp") center / cover no-repeat;
   }
   .project-thumb.addiction-thumb .project-thumb-inner {
     display: none;
@@ -1300,7 +1300,7 @@
   .project-thumb.family-thumb {
     background:
       linear-gradient(180deg, rgba(16,21,33,0.24) 0%, rgba(16,21,33,0.5) 100%),
-      url("../images/family-restoration.jpg") center / cover no-repeat;
+      url("../images/family-restoration.webp") center / cover no-repeat;
   }
   .project-thumb.family-thumb .project-thumb-inner {
     display: none;
@@ -1393,7 +1393,7 @@
     overflow: hidden;
     background:
       linear-gradient(160deg, rgba(16,21,33,0.6), rgba(16,21,33,0.14)),
-      url("../images/kingdom-drip-store-hero-bg.png") center / cover no-repeat;
+      url("../images/kingdom-drip-store-hero-bg.webp") center / cover no-repeat;
     box-shadow: 0 16px 30px rgba(5, 11, 20, 0.32);
     display: flex;
     align-items: flex-end;
