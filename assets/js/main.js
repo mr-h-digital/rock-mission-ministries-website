@@ -183,6 +183,11 @@
 
     function tryPlay(v) {
       v.muted = true;
+      // Avoid eager fetches for background videos until they are activated.
+      if (v.preload === 'none' && !v.dataset.preloaded) {
+        v.preload = 'metadata';
+        v.dataset.preloaded = 'true';
+      }
       // Explicitly load before play — required by Android Chrome in some cases
       if (v.readyState === 0) v.load();
       var p = v.play();
@@ -205,7 +210,10 @@
       current = (current + 1) % videos.length;
       // Pre-load the next-next video in the background
       var upcoming = (current + 1) % videos.length;
-      if (videos[upcoming].preload === 'none') videos[upcoming].preload = 'auto';
+      if (videos[upcoming].preload === 'none') {
+        videos[upcoming].preload = 'metadata';
+        videos[upcoming].dataset.preloaded = 'true';
+      }
       activate(current);
       setTimeout(function () {
         videos[prev].classList.remove('is-active');
