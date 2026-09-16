@@ -170,6 +170,28 @@
 
   updateCinematicShift();
 
+  // Click-to-load YouTube embeds for reliable thumbnails and lighter initial load.
+  document.querySelectorAll('[data-video-embed]').forEach(function (frame) {
+    var trigger = frame.querySelector('.video-poster');
+    if (!(trigger instanceof HTMLButtonElement)) return;
+
+    trigger.addEventListener('click', function () {
+      var src = frame.getAttribute('data-embed-src');
+      var title = frame.getAttribute('data-embed-title') || 'Rock Mission video';
+      if (!src) return;
+
+      var iframe = document.createElement('iframe');
+      iframe.src = src + (src.indexOf('?') === -1 ? '?autoplay=1' : '&autoplay=1');
+      iframe.title = title;
+      iframe.loading = 'lazy';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+
+      frame.replaceChildren(iframe);
+    }, { once: true });
+  });
+
   // ─── HERO VIDEO CAROUSEL ──────────────────────────────
   (function () {
     var bg = document.getElementById('heroVideoBg');
