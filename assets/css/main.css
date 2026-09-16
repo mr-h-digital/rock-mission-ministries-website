@@ -3018,7 +3018,7 @@
     .armory-card h3 { font-size: 20px; }
     .armory-card p { font-size: 13px; }
     .rockidz-grid {
-      padding-top: 76px;
+      gap: 16px;
     }
     .rockidz-visual {
       min-height: 176px;
