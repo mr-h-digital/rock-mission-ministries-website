@@ -3,23 +3,29 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>About | Rock Mission Ministries</title>
+<title>About Rock Mission Ministries | Cape Town Christian Outreach</title>
 <link rel="icon" type="image/png" href="../assets/images/rock-mission-logo-transparent.png" />
 <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon-180.png" />
 <meta name="description" content="Learn about Rock Mission Ministries, a Christian outreach ministry in Cape Town focused on discipleship, restoration, and practical community support." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://rockmission.co.za/pages/about.html" />
+<meta name="keywords" content="about Rock Mission Ministries, Cape Town Christian outreach, Cape Flats ministry, Mitchell's Plain church, faith-based community support" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Rock Mission Ministries" />
-<meta property="og:title" content="About | Rock Mission Ministries" />
+<meta property="og:title" content="About Rock Mission Ministries | Cape Town Christian Outreach" />
 <meta property="og:description" content="Discover the calling and mission of Rock Mission Ministries serving communities across the Cape Flats." />
 <meta property="og:url" content="https://rockmission.co.za/pages/about.html" />
-<meta property="og:image" content="https://rockmission.co.za/assets/images/pwa-icon-512.png" />
+<meta property="og:image" content="https://rockmission.co.za/assets/images/congregation-photo.webp" />
+<meta property="og:image:alt" content="Rock Mission Ministries congregation in Cape Town" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="808" />
+<meta property="og:image:type" content="image/webp" />
 <meta property="og:locale" content="en_ZA" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="About | Rock Mission Ministries" />
+<meta name="twitter:title" content="About Rock Mission Ministries | Cape Town Christian Outreach" />
 <meta name="twitter:description" content="Discover the calling and mission of Rock Mission Ministries serving communities across the Cape Flats." />
-<meta name="twitter:image" content="https://rockmission.co.za/assets/images/pwa-icon-512.png" />
+<meta name="twitter:image" content="https://rockmission.co.za/assets/images/congregation-photo.webp" />
+<meta name="twitter:image:alt" content="Rock Mission Ministries congregation in Cape Town" />
 <link rel="manifest" href="../site.webmanifest" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,10 +33,35 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Rock Mission Ministries",
-  "url": "https://rockmission.co.za/pages/about.html",
-  "isPartOf": "https://rockmission.co.za/"
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "name": "About Rock Mission Ministries",
+      "url": "https://rockmission.co.za/pages/about.html",
+      "isPartOf": "https://rockmission.co.za/",
+      "about": {
+        "@id": "https://rockmission.co.za/#church"
+      }
+    },
+    {
+      "@type": "Church",
+      "@id": "https://rockmission.co.za/#church",
+      "name": "Rock Mission Ministries",
+      "url": "https://rockmission.co.za/",
+      "logo": "https://rockmission.co.za/assets/images/rock-mission-logo-transparent.webp",
+      "image": "https://rockmission.co.za/assets/images/congregation-photo.webp",
+      "description": "Christian outreach ministry in Cape Town serving communities across the Cape Flats.",
+      "email": "info@rockmission.co.za",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5 Siegfried St, Eastridge Community Centre",
+        "addressLocality": "Mitchell's Plain",
+        "addressRegion": "Western Cape",
+        "postalCode": "7785",
+        "addressCountry": "ZA"
+      }
+    }
+  ]
 }
 </script>
 <link rel="stylesheet" href="../assets/css/main.css" />
