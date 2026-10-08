@@ -19,6 +19,7 @@
     --font-body: 'Outfit', sans-serif;
     --font-italic: 'Playfair Display', serif;
     --nav-h: 72px;
+    --cinema-shift: 0px;
   }
 
   /* ─── RESET ─────────────────────────────────────── */
@@ -30,7 +31,7 @@
       var(--hero-radial),
       var(--rock);
     color: var(--cream);
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     line-height: 1.65;
     overflow-x: hidden;
     width: 100%;
@@ -128,7 +129,7 @@
     box-sizing: border-box;
   }
   .section-label {
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.22em;
@@ -147,7 +148,7 @@
     flex-shrink: 0;
   }
   .section-heading {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(44px, 7vw, 82px);
     line-height: 0.95;
     letter-spacing: 0.01em;
@@ -160,7 +161,7 @@
     gap: 10px;
     background: var(--grad-gold);
     color: #0b1220;
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 0.08em;
@@ -178,9 +179,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: transparent;
     color: var(--cream);
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.08em;
@@ -220,7 +220,7 @@
   .armory-tagline {
     margin-top: 8px;
     margin-bottom: 28px;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(28px, 4.4vw, 48px);
     line-height: 0.98;
     letter-spacing: 0.03em;
@@ -244,12 +244,15 @@
     border: 1px solid var(--border);
     border-radius: 18px;
     overflow: hidden;
-    background:
+    background-image:
       linear-gradient(180deg, rgba(7, 13, 24, 0.24) 0%, rgba(7, 13, 24, 0.78) 100%),
       radial-gradient(circle at top left, rgba(32,227,207,0.2), transparent 36%),
       radial-gradient(circle at bottom right, rgba(255,47,165,0.18), transparent 40%),
-      url("../images/armory-background.webp") center right / cover no-repeat,
+      url("../images/armory-background.webp"),
       linear-gradient(160deg, rgba(16,21,33,0.92), rgba(24,38,58,0.92));
+    background-position: center, center, center, right center, center;
+    background-size: auto, auto, auto, cover, auto;
+    background-repeat: no-repeat;
     box-shadow: 0 16px 30px rgba(5, 11, 20, 0.32);
     display: flex;
     flex-direction: column;
@@ -275,7 +278,7 @@
     filter: drop-shadow(0 20px 34px rgba(0, 0, 0, 0.26));
   }
   .armory-visual-title {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(28px, 4vw, 42px);
     line-height: 0.92;
     letter-spacing: 0.16em;
@@ -332,7 +335,7 @@
     border-radius: 999px;
   }
   .armory-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 30px;
     line-height: 0.96;
     letter-spacing: 0.02em;
@@ -473,7 +476,7 @@
     border-radius: 999px;
   }
   .rockidz-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 30px;
     line-height: 0.96;
     letter-spacing: 0.02em;
@@ -593,12 +596,14 @@
   /* ─── HERO ───────────────────────────────────────── */
   #home {
     min-height: 100vh;
-    min-height: 100dvh;
     display: flex;
     align-items: center;
     position: relative;
     overflow: hidden;
     padding-top: var(--nav-h);
+  }
+  @supports (min-height: 100dvh) {
+    #home { min-height: 100dvh; }
   }
   /* ─── HERO VIDEO BACKDROP ────────────────────────── */
   .hero-video-bg {
@@ -821,7 +826,7 @@
     100% { clip-path: inset(0 -8% 0 78%); }
   }
   .hero-title {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(64px, 11vw, 136px);
     line-height: 0.88;
     letter-spacing: 0.01em;
@@ -836,7 +841,7 @@
   }
   .hero-title .italic-line {
     display: block;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(24px, 3.8vw, 44px);
     font-weight: 400;
     font-style: normal;
@@ -894,7 +899,7 @@
   }
   .hero-acronym .letter-block:hover::before { opacity: 1; }
   .hero-acronym .letter-block .big {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 34px;
     line-height: 1;
     background: var(--grad-gold);
@@ -981,7 +986,7 @@
     animation: marquee 24s linear infinite;
   }
   .marquee-track span {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 18px;
     color: #07101d;
     letter-spacing: 0.06em;
@@ -1051,13 +1056,13 @@
     color: var(--rock);
     padding: 20px 24px;
     border-radius: 16px;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 48px;
     line-height: 1;
     z-index: 2;
   }
   .about-corner-badge .badge-sub {
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -1068,7 +1073,7 @@
   .about-text p { color: var(--muted); font-size: 16px; margin-bottom: 16px; }
   .about-text p strong { color: var(--cream); font-weight: 500; }
   .about-text .scripture {
-    font-family: var(--font-italic);
+    font-family: var(--font-italic), serif;
     font-style: italic;
     font-size: 18px;
     color: var(--gold-light);
@@ -1077,7 +1082,7 @@
     margin: 28px 0;
     line-height: 1.5;
   }
-  .about-text .scripture cite { display: block; font-style: normal; font-size: 12px; font-family: var(--font-body); color: var(--muted); margin-top: 8px; letter-spacing: 0.1em; }
+  .about-text .scripture cite { display: block; font-style: normal; font-size: 12px; font-family: var(--font-body), sans-serif; color: var(--muted); margin-top: 8px; letter-spacing: 0.1em; }
   .pastor-tag {
     display: flex;
     align-items: center;
@@ -1093,7 +1098,7 @@
     border-radius: 50%;
     background: var(--grad-gold);
     display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 24px;
     color: var(--rock);
     flex-shrink: 0;
@@ -1132,7 +1137,7 @@
   }
   .stat-item:last-child { border-right: none; }
   .stat-num {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 56px;
     color: var(--gold);
     line-height: 1;
@@ -1183,7 +1188,7 @@
     font-size: 22px;
   }
   .service-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 28px;
     color: var(--white);
     letter-spacing: 0.02em;
@@ -1398,7 +1403,7 @@
     border-radius: 999px;
   }
   .video-body h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 30px;
     letter-spacing: 0.02em;
     margin-bottom: 10px;
@@ -1529,7 +1534,7 @@
   }
   .project-body { padding: 24px; }
   .project-body h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 28px;
     letter-spacing: 0.02em;
     color: var(--white);
@@ -1563,7 +1568,7 @@
   .kingdom-drip-hashtag {
     margin-top: 8px;
     margin-bottom: 28px;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(28px, 4.8vw, 52px);
     line-height: 0.95;
     letter-spacing: 0.03em;
@@ -1659,7 +1664,7 @@
     border-radius: 999px;
   }
   .kingdom-drip-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 30px;
     line-height: 0.96;
     letter-spacing: 0.02em;
@@ -1744,7 +1749,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 48px;
     color: var(--gold);
     position: absolute;
@@ -1779,7 +1784,7 @@
     z-index: auto;
   }
   .team-card .t-name {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 21px;
     color: var(--white);
     letter-spacing: 0.02em;
@@ -1818,7 +1823,7 @@
     pointer-events: none;
   }
   .gospel-cta .big-quote {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: clamp(80px, 14vw, 200px);
     color: rgba(255,47,165,0.1);
     line-height: 1;
@@ -1831,7 +1836,7 @@
   }
   .gospel-cta .content { position: relative; z-index: 1; }
   .gospel-cta .scripture-quote {
-    font-family: var(--font-italic);
+    font-family: var(--font-italic), serif;
     font-style: italic;
     font-size: clamp(22px, 3.5vw, 36px);
     color: #d5fffb;
@@ -1871,11 +1876,11 @@
     text-align: center;
     flex-shrink: 0;
   }
-  .event-date .day { font-family: var(--font-display); font-size: 40px; color: var(--gold); line-height: 1; }
+  .event-date .day { font-family: var(--font-display), sans-serif; font-size: 40px; color: var(--gold); line-height: 1; }
   .event-date .month { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
   .event-divider { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; }
   .event-info { flex: 1; }
-  .event-info h3 { font-family: var(--font-display); font-size: 24px; color: var(--white); letter-spacing: 0.02em; }
+  .event-info h3 { font-family: var(--font-display), sans-serif; font-size: 24px; color: var(--white); letter-spacing: 0.02em; }
   .event-info .event-meta { font-size: 13px; color: var(--muted); margin-top: 4px; }
   .event-badge {
     font-size: 10px;
@@ -1910,7 +1915,7 @@
     padding: 40px;
   }
   .donate-card h3 {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 32px;
     color: var(--white);
     margin-bottom: 24px;
@@ -2017,7 +2022,7 @@
     border-radius: 12px;
     padding: 13px 16px;
     color: var(--cream);
-    font-family: var(--font-body);
+    font-family: var(--font-body), sans-serif;
     font-size: 14px;
     outline: none;
     transition: border-color 0.2s;
@@ -2222,6 +2227,8 @@
   .footer-col ul li a:hover { color: var(--cream); }
   .footer-bottom {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px 24px;
     align-items: center;
     justify-content: space-between;
     padding-top: 32px;
@@ -2277,6 +2284,18 @@
     filter: drop-shadow(0 0 12px rgba(32,227,207,0.36));
   }
   .footer-bottom a { color: var(--gold); }
+  .footer-admin-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    white-space: nowrap;
+    border-radius: 4px;
+  }
+  .footer-admin-link:hover { text-decoration: underline; }
+  .footer-admin-link:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+  }
 
   /* ─── MOBILE NAV ─────────────────────────────────── */
   .mobile-menu {
@@ -2302,7 +2321,7 @@
   }
   .mobile-menu.open { transform: translateX(0); }
   .mobile-menu a {
-    font-family: var(--font-display);
+    font-family: var(--font-display), sans-serif;
     font-size: 40px;
     color: var(--cream);
     letter-spacing: 0.04em;

@@ -161,16 +161,16 @@
 <!-- HERO -->
 <section id="home">
   <div class="hero-video-bg" id="heroVideoBg">
-    <video class="hero-video is-active" muted playsinline webkit-playsinline autoplay preload="metadata" poster="assets/images/hero-video-poster.jpg">
+    <video class="hero-video is-active" muted playsinline autoplay preload="metadata" poster="assets/images/hero-video-poster.jpg">
       <source src="assets/videos/hero-backdrop-video-1.optimized.mp4" type="video/mp4" />
     </video>
-    <video class="hero-video" muted playsinline webkit-playsinline preload="none">
+    <video class="hero-video" muted playsinline preload="none">
       <source src="assets/videos/hero-backdrop-video-2.optimized.mp4" type="video/mp4" />
     </video>
-    <video class="hero-video" muted playsinline webkit-playsinline preload="none">
+    <video class="hero-video" muted playsinline preload="none">
       <source src="assets/videos/hero-backdrop-video-3.optimized.mp4" type="video/mp4" />
     </video>
-    <video class="hero-video" muted playsinline webkit-playsinline preload="none">
+    <video class="hero-video" muted playsinline preload="none">
       <source src="assets/videos/hero-backdrop-video-4.optimized.mp4" type="video/mp4" />
     </video>
   </div>
@@ -866,7 +866,8 @@
           <input type="hidden" name="access_key" value="b04fbcd9-e1df-49d3-b16e-6229504f1555" />
           <input type="hidden" name="subject" value="New message from Rock Mission Ministries website" />
           <input type="hidden" name="from_name" value="Rock Mission Ministries Website" />
-          <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label for="home-botcheck" class="form-honeypot" aria-hidden="true">Leave this field unchecked</label>
+          <input id="home-botcheck" type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <div class="form-row">
             <div class="form-group">
               <label for="home-first-name">First Name</label>
@@ -946,6 +947,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2022 Rock Mission Ministries — Non-Profit Organisation, Cape Town, South Africa</span>
+      <a href="https://ledger.rockmission.co.za/" class="footer-admin-link" aria-label="Admin Portal - sign in to Rock Ledger">Admin Portal</a>
       <span class="footer-credit">
         <span>Built with ❤️ by</span>
         <a href="https://mrhdigital.co.za" target="_blank" rel="noopener" class="footer-credit-link" aria-label="Visit Mr. H Digital website">
